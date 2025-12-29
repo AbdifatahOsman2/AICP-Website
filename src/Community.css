@@ -1,0 +1,519 @@
+/* Community Page Styles */
+
+.community-page {
+  font-family: 'Lato', sans-serif;
+  background: #fafaf8;
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.community-hero {
+  padding: 140px 24px 60px;
+  text-align: center;
+  background: linear-gradient(180deg, #f0f4f8 0%, #fafaf8 100%);
+}
+
+.community-hero-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.community-label {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 16px;
+}
+
+.community-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  color: var(--charcoal);
+  margin-bottom: 20px;
+}
+
+.community-subtitle {
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: rgba(26, 26, 26, 0.6);
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+/* Gallery Section */
+.gallery-section {
+  padding: clamp(40px, 8vw, 80px) 0 clamp(80px, 12vw, 140px);
+  background: linear-gradient(180deg, #fafaf8 0%, #eef2f7 100%);
+}
+
+/* Bento Grid Layout - Matching the design */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, minmax(200px, 240px));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Gallery Item Base Styles */
+.gallery-item {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #e0e4e8;
+}
+
+/* Image Container for scrollable carousel */
+.gallery-images-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.gallery-image {
+  min-width: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+  transition: transform 0.6s ease;
+}
+
+/* Single image hover effect */
+.gallery-item:not(.has-multiple):hover .gallery-image {
+  transform: scale(1.08);
+}
+
+/* Multiple images - scroll on hover */
+.gallery-item.has-multiple .gallery-images-container {
+  animation-play-state: paused;
+}
+
+.gallery-item.has-multiple:hover .gallery-images-container {
+  animation: scrollImages 4s ease-in-out infinite;
+}
+
+@keyframes scrollImages {
+  0%, 20% {
+    transform: translateX(0);
+  }
+  35%, 55% {
+    transform: translateX(-100%);
+  }
+  70%, 90% {
+    transform: translateX(-200%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* For items with only 2 images */
+.gallery-item.has-multiple:hover .gallery-images-container:has(img:nth-child(2):last-child) {
+  animation: scrollImages2 3s ease-in-out infinite;
+}
+
+@keyframes scrollImages2 {
+  0%, 30% {
+    transform: translateX(0);
+  }
+  50%, 80% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Overlay with gradient */
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+/* Caption styling */
+.gallery-caption {
+  transform: translateY(20px);
+  transition: transform 0.4s ease;
+}
+
+.gallery-item:hover .gallery-caption {
+  transform: translateY(0);
+}
+
+.gallery-caption h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.gallery-caption p {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.4;
+}
+
+/* Photo count badge */
+.gallery-photo-count {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 10;
+}
+
+.gallery-photo-count i {
+  font-size: 0.6875rem;
+}
+
+/* Bento Grid Item Placement - Matching the design image */
+.gallery-item-1 {
+  grid-column: 1;
+  grid-row: 1 / 3;
+}
+
+.gallery-item-2 {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.gallery-item-3 {
+  grid-column: 3 / 5;
+  grid-row: 1;
+}
+
+.gallery-item-4 {
+  grid-column: 1;
+  grid-row: 3 / 4;
+}
+
+.gallery-item-5 {
+  grid-column: 2;
+  grid-row: 2 / 4;
+}
+
+.gallery-item-6 {
+  grid-column: 3;
+  grid-row: 2 / 4;
+}
+
+.gallery-item-7 {
+  grid-column: 4;
+  grid-row: 2 / 4;
+}
+
+.gallery-item-8 {
+  grid-column: 1 / 3;
+  grid-row: 4;
+}
+
+/* Gallery CTA */
+.gallery-cta {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.gallery-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  background: transparent;
+  color: var(--charcoal);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 100px;
+  border: 1.5px solid rgba(26, 26, 26, 0.2);
+  transition: all 0.3s ease;
+}
+
+.gallery-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.gallery-btn i {
+  font-size: 0.875rem;
+  transition: transform 0.3s ease;
+}
+
+.gallery-btn:hover i {
+  transform: translateX(4px);
+}
+
+/* Community Events Section */
+.community-events {
+  padding: clamp(80px, 12vw, 140px) 24px;
+  background: #ffffff;
+  text-align: center;
+}
+
+.events-header {
+  max-width: 600px;
+  margin: 0 auto 60px;
+}
+
+.events-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  color: var(--charcoal);
+  margin-bottom: 16px;
+}
+
+.events-subtitle {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: rgba(26, 26, 26, 0.6);
+}
+
+/* Social Links Cards */
+.social-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.social-card {
+  background: #fafaf8;
+  border-radius: 16px;
+  padding: 40px 24px;
+  text-decoration: none;
+  transition: all 0.4s ease;
+}
+
+.social-card:hover {
+  background: #ffffff;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+}
+
+.social-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.social-icon i {
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
+.social-icon.facebook {
+  background: linear-gradient(135deg, #1877f2 0%, #0d5bbd 100%);
+}
+
+.social-icon.instagram {
+  background: linear-gradient(135deg, #e1306c 0%, #f77737 100%);
+}
+
+.social-icon.youtube {
+  background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+}
+
+.social-card h4 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  margin-bottom: 8px;
+}
+
+.social-card p {
+  font-size: 0.9375rem;
+  color: rgba(26, 26, 26, 0.6);
+  line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 200px);
+    gap: 16px;
+  }
+
+  .gallery-item-1 {
+    grid-column: 1;
+    grid-row: 1 / 3;
+  }
+
+  .gallery-item-2 {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .gallery-item-3 {
+    grid-column: 3;
+    grid-row: 1 / 3;
+  }
+
+  .gallery-item-4 {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .gallery-item-5 {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .gallery-item-6 {
+    grid-column: 2;
+    grid-row: 3;
+  }
+
+  .gallery-item-7 {
+    grid-column: 3;
+    grid-row: 3;
+  }
+
+  .gallery-item-8 {
+    grid-column: 1 / 4;
+    grid-row: 4;
+  }
+
+  .social-links {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .community-hero {
+    padding: 120px 24px 40px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 180px);
+    gap: 12px;
+  }
+
+  .gallery-item-1 {
+    grid-column: 1;
+    grid-row: 1 / 3;
+  }
+
+  .gallery-item-2 {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .gallery-item-3 {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .gallery-item-4 {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .gallery-item-5 {
+    grid-column: 2;
+    grid-row: 3 / 5;
+  }
+
+  .gallery-item-6 {
+    grid-column: 1;
+    grid-row: 4;
+  }
+
+  .gallery-item-7,
+  .gallery-item-8 {
+    display: none;
+  }
+
+  .gallery-item {
+    border-radius: 14px;
+  }
+
+  .gallery-overlay {
+    opacity: 1;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      transparent 50%,
+      rgba(0, 0, 0, 0.65) 100%
+    );
+  }
+
+  .gallery-caption {
+    transform: translateY(0);
+  }
+
+  .gallery-caption h4 {
+    font-size: 0.9375rem;
+  }
+
+  .gallery-caption p {
+    font-size: 0.8125rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .gallery-photo-count {
+    padding: 5px 12px;
+    font-size: 0.75rem;
+  }
+
+  .community-events {
+    padding: 60px 24px;
+  }
+
+  .social-card {
+    padding: 32px 20px;
+  }
+
+  /* Pause animation on touch devices - use tap to see carousel */
+  .gallery-item.has-multiple:hover .gallery-images-container {
+    animation-duration: 6s;
+  }
+}
+

@@ -1,0 +1,491 @@
+/* Prayer Times Page Styles */
+
+.prayer-times-page {
+  font-family: 'Lato', sans-serif;
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.prayer-hero {
+  padding: 120px 24px 40px;
+  text-align: center;
+  background: linear-gradient(180deg, #e8f0f8 0%, #f8fafc 100%);
+  border-bottom: 4px solid var(--primary);
+}
+
+.prayer-hero-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.prayer-date {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--charcoal);
+  margin-bottom: 12px;
+}
+
+.prayer-hijri {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.prayer-hijri i {
+  font-size: 0.875rem;
+}
+
+/* Main Content */
+.prayer-content {
+  padding: clamp(40px, 8vw, 80px) 24px;
+}
+
+.prayer-content .container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Next Prayer Card */
+.next-prayer-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: clamp(32px, 6vw, 48px);
+  text-align: center;
+  border-left: 4px solid var(--primary);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  margin-bottom: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.next-prayer-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle at top right, rgba(8, 52, 117, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.next-prayer-label {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--primary);
+  background: rgba(8, 52, 117, 0.08);
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+
+.next-prayer-name {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: var(--charcoal);
+  margin-bottom: 8px;
+}
+
+.next-prayer-time {
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 0.6);
+  margin-bottom: 32px;
+}
+
+/* Countdown Display */
+.countdown-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.countdown-value {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--charcoal);
+  background: #f8fafc;
+  border: 1.5px solid rgba(26, 26, 26, 0.1);
+  border-radius: 12px;
+  padding: 16px 24px;
+  min-width: 80px;
+  text-align: center;
+}
+
+.countdown-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(26, 26, 26, 0.5);
+  margin-top: 8px;
+}
+
+.countdown-separator {
+  font-size: 2rem;
+  font-weight: 300;
+  color: rgba(26, 26, 26, 0.3);
+  margin-bottom: 24px;
+}
+
+/* Schedule Tabs */
+.schedule-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.1);
+  padding-bottom: 0;
+}
+
+.schedule-tab {
+  background: none;
+  border: none;
+  padding: 12px 20px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: rgba(26, 26, 26, 0.5);
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.schedule-tab::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: transparent;
+  transition: background 0.3s ease;
+}
+
+.schedule-tab:hover {
+  color: var(--charcoal);
+}
+
+.schedule-tab.active {
+  color: var(--primary);
+}
+
+.schedule-tab.active::after {
+  background: var(--primary);
+}
+
+/* Prayer Table */
+.prayer-table-container {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  margin-bottom: 40px;
+}
+
+.prayer-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.prayer-table thead {
+  background: #f8fafc;
+}
+
+.prayer-table th {
+  padding: 16px 24px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(26, 26, 26, 0.5);
+  text-align: left;
+}
+
+.prayer-table th:last-child {
+  color: var(--primary);
+}
+
+.prayer-table td {
+  padding: 20px 24px;
+  font-size: 1rem;
+  border-top: 1px solid rgba(26, 26, 26, 0.06);
+}
+
+.prayer-table tr:hover {
+  background: rgba(8, 52, 117, 0.02);
+}
+
+.prayer-name-cell {
+  font-weight: 600;
+  color: var(--charcoal);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.next-indicator {
+  width: 6px;
+  height: 6px;
+  background: var(--primary);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+.adhan-cell {
+  color: rgba(26, 26, 26, 0.7);
+}
+
+.iqamah-cell {
+  font-weight: 700;
+  color: var(--charcoal);
+}
+
+/* Next Prayer Row Highlight */
+.next-prayer-row {
+  background: rgba(8, 52, 117, 0.04) !important;
+  border-left: 4px solid var(--primary);
+}
+
+.next-prayer-row .prayer-name-cell,
+.next-prayer-row .adhan-cell,
+.next-prayer-row .iqamah-cell {
+  color: var(--primary);
+}
+
+.next-prayer-row .iqamah-cell {
+  font-weight: 700;
+}
+
+/* Sunrise Row */
+.sunrise-row {
+  opacity: 0.6;
+}
+
+.sunrise-icon {
+  color: #f59e0b;
+  font-size: 0.875rem;
+}
+
+/* Monthly Schedule */
+.monthly-schedule {
+  overflow-x: auto;
+}
+
+.prayer-table.monthly th,
+.prayer-table.monthly td {
+  padding: 14px 16px;
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+.prayer-table.monthly th:first-child,
+.prayer-table.monthly td:first-child {
+  text-align: left;
+  font-weight: 600;
+}
+
+/* Loading & Error States */
+.loading-cell,
+.error-cell {
+  padding: 60px 24px !important;
+  text-align: center;
+  color: rgba(26, 26, 26, 0.5);
+}
+
+.loading-spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(8, 52, 117, 0.2);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 12px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.error-cell {
+  color: #ef4444;
+}
+
+/* Map Container */
+.map-container {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.map-wrapper {
+  width: 100%;
+  height: 350px;
+}
+
+.map-wrapper iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.map-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  border-top: 1px solid rgba(26, 26, 26, 0.06);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.map-location {
+  flex: 1;
+}
+
+.map-label {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(26, 26, 26, 0.5);
+  margin-bottom: 8px;
+}
+
+.map-location h4 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  margin-bottom: 4px;
+}
+
+.map-location p {
+  font-size: 0.9375rem;
+  color: rgba(26, 26, 26, 0.6);
+}
+
+.directions-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: var(--primary);
+  color: #ffffff;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.directions-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.directions-btn i {
+  font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .prayer-hero {
+    padding: 100px 20px 32px;
+  }
+
+  .prayer-content {
+    padding: 32px 16px;
+  }
+
+  .next-prayer-card {
+    padding: 24px 20px;
+  }
+
+  .countdown-value {
+    padding: 12px 16px;
+    min-width: 60px;
+    font-size: 1.5rem;
+  }
+
+  .countdown-separator {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+  }
+
+  .prayer-table th,
+  .prayer-table td {
+    padding: 16px 16px;
+    font-size: 0.9375rem;
+  }
+
+  .prayer-table th:first-child,
+  .prayer-table td:first-child {
+    padding-left: 20px;
+  }
+
+  .map-wrapper {
+    height: 280px;
+  }
+
+  .map-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .directions-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .schedule-tabs {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .countdown-display {
+    gap: 8px;
+  }
+
+  .countdown-value {
+    padding: 10px 12px;
+    min-width: 50px;
+    font-size: 1.25rem;
+  }
+
+  .countdown-label {
+    font-size: 0.5625rem;
+  }
+
+  .prayer-table.monthly {
+    font-size: 0.75rem;
+  }
+
+  .prayer-table.monthly th,
+  .prayer-table.monthly td {
+    padding: 10px 8px;
+  }
+}
+
