@@ -1,0 +1,793 @@
+/* Registration Page Styles */
+
+.registration-page {
+  font-family: 'Lato', sans-serif;
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.reg-hero {
+  padding: 140px 24px 60px;
+  text-align: center;
+  background: linear-gradient(180deg, #e8f0f8 0%, #f8fafc 100%);
+}
+
+.reg-hero-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.reg-label {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  margin-bottom: 16px;
+}
+
+.reg-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: var(--charcoal);
+  margin-bottom: 12px;
+}
+
+.reg-subtitle {
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 0.6);
+}
+
+/* Progress Steps */
+.reg-progress-container {
+  padding: 0 24px;
+  margin-bottom: 48px;
+}
+
+.reg-progress {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+}
+
+.reg-progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 2;
+}
+
+.reg-step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 700;
+  background: #fff;
+  border: 2px solid rgba(26, 26, 26, 0.15);
+  color: rgba(26, 26, 26, 0.4);
+  transition: all 0.3s ease;
+}
+
+.reg-progress-step.active .reg-step-number {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.reg-progress-step.completed .reg-step-number {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.reg-step-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(26, 26, 26, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease;
+}
+
+.reg-progress-step.active .reg-step-label,
+.reg-progress-step.completed .reg-step-label {
+  color: var(--primary);
+}
+
+.reg-progress-line {
+  position: absolute;
+  top: 20px;
+  left: 60px;
+  right: 60px;
+  height: 2px;
+  background: rgba(26, 26, 26, 0.1);
+  z-index: 1;
+}
+
+.reg-progress-fill {
+  height: 100%;
+  background: var(--primary);
+  transition: width 0.4s ease;
+}
+
+/* Form Section */
+.reg-form-section {
+  padding: 0 24px 80px;
+}
+
+.reg-form {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 20px;
+  padding: clamp(32px, 6vw, 48px);
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.06);
+}
+
+.reg-step-header {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.reg-step-header h2 {
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--charcoal);
+  margin-bottom: 8px;
+}
+
+.reg-step-header p {
+  font-size: 0.9375rem;
+  color: rgba(26, 26, 26, 0.5);
+}
+
+/* Form Grid */
+.reg-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 640px) {
+  .reg-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Input Groups */
+.reg-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.reg-input-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.reg-input-group label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--charcoal);
+}
+
+.reg-input-group input,
+.reg-input-group select,
+.reg-input-group textarea {
+  width: 100%;
+  padding: 14px 16px;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.9375rem;
+  color: var(--charcoal);
+  background: #f8fafc;
+  border: 1.5px solid transparent;
+  border-radius: 10px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.reg-input-group input::placeholder,
+.reg-input-group textarea::placeholder {
+  color: rgba(26, 26, 26, 0.35);
+}
+
+.reg-input-group input:focus,
+.reg-input-group select:focus,
+.reg-input-group textarea:focus {
+  background: #fff;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(8, 52, 117, 0.08);
+}
+
+.reg-input-group select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%231a1a1a' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+
+.reg-input-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Section Divider */
+.reg-section-divider {
+  margin: 32px 0 24px;
+  text-align: center;
+  position: relative;
+}
+
+.reg-section-divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(26, 26, 26, 0.1);
+}
+
+.reg-section-divider span {
+  position: relative;
+  padding: 0 20px;
+  background: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(26, 26, 26, 0.4);
+}
+
+/* Programs Section */
+.reg-programs-section {
+  margin-bottom: 32px;
+}
+
+.reg-section-label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  margin-bottom: 16px;
+}
+
+.reg-programs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 640px) {
+  .reg-programs-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.reg-program-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  background: #f8fafc;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.reg-program-card:hover {
+  background: #f0f4f8;
+}
+
+.reg-program-card.selected {
+  background: rgba(8, 52, 117, 0.04);
+  border-color: var(--primary);
+}
+
+.reg-program-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(8, 52, 117, 0.08);
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.reg-program-icon i {
+  font-size: 1rem;
+  color: var(--primary);
+}
+
+.reg-program-label {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  flex: 1;
+}
+
+.reg-program-check {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid rgba(26, 26, 26, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.reg-program-check i {
+  font-size: 0.625rem;
+  color: transparent;
+  transition: color 0.3s ease;
+}
+
+.reg-program-card.selected .reg-program-check {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.reg-program-card.selected .reg-program-check i {
+  color: #fff;
+}
+
+/* Schedule Section */
+.reg-schedule-section {
+  margin-bottom: 32px;
+}
+
+.reg-schedule-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.reg-schedule-option {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: #f8fafc;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.reg-schedule-option:hover {
+  background: #f0f4f8;
+}
+
+.reg-schedule-option.selected {
+  background: rgba(8, 52, 117, 0.04);
+  border-color: var(--primary);
+}
+
+.reg-schedule-option input {
+  display: none;
+}
+
+.reg-schedule-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.reg-schedule-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--charcoal);
+}
+
+.reg-schedule-time {
+  font-size: 0.875rem;
+  color: rgba(26, 26, 26, 0.5);
+}
+
+.reg-schedule-check {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid rgba(26, 26, 26, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.reg-schedule-check i {
+  font-size: 0.625rem;
+  color: transparent;
+}
+
+.reg-schedule-option.selected .reg-schedule-check {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.reg-schedule-option.selected .reg-schedule-check i {
+  color: #fff;
+}
+
+/* Review Section */
+.reg-review-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.reg-review-section {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.reg-review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+}
+
+.reg-review-header h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 0.02em;
+}
+
+.reg-review-header h3 i {
+  font-size: 0.875rem;
+}
+
+.reg-edit-btn {
+  padding: 6px 14px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--primary);
+  background: rgba(8, 52, 117, 0.08);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.reg-edit-btn:hover {
+  background: rgba(8, 52, 117, 0.12);
+}
+
+.reg-review-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .reg-review-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.reg-review-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.reg-review-item.full-width {
+  grid-column: 1 / -1;
+}
+
+.reg-review-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(26, 26, 26, 0.4);
+}
+
+.reg-review-value {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  text-transform: capitalize;
+}
+
+/* Terms Checkbox */
+.reg-terms {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(26, 26, 26, 0.08);
+}
+
+.reg-checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.reg-checkbox-label input {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+.reg-checkbox-label span {
+  font-size: 0.875rem;
+  color: rgba(26, 26, 26, 0.6);
+  line-height: 1.6;
+}
+
+.reg-checkbox-label a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.reg-checkbox-label a:hover {
+  text-decoration: underline;
+}
+
+/* Form Navigation */
+.reg-form-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(26, 26, 26, 0.08);
+  gap: 16px;
+}
+
+.reg-btn-primary,
+.reg-btn-secondary,
+.reg-btn-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.reg-btn-primary {
+  background: var(--primary);
+  color: #fff;
+  margin-left: auto;
+}
+
+.reg-btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -4px rgba(8, 52, 117, 0.3);
+}
+
+.reg-btn-secondary {
+  background: transparent;
+  color: var(--charcoal);
+  border: 1.5px solid rgba(26, 26, 26, 0.15);
+}
+
+.reg-btn-secondary:hover {
+  background: #f8fafc;
+  border-color: rgba(26, 26, 26, 0.25);
+}
+
+.reg-btn-submit {
+  background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+  color: var(--primary);
+  margin-left: auto;
+}
+
+.reg-btn-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -4px rgba(240, 197, 65, 0.4);
+}
+
+.reg-btn-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Spinner */
+.reg-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid transparent;
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Success Page */
+.reg-success-container {
+  min-height: calc(100vh - 160px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 24px 80px;
+}
+
+.reg-success-card {
+  max-width: 500px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 48px;
+  text-align: center;
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.06);
+}
+
+.reg-success-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(34, 197, 94, 0.1);
+  border-radius: 50%;
+}
+
+.reg-success-icon i {
+  font-size: 2.5rem;
+  color: #22c55e;
+}
+
+.reg-success-card h1 {
+  font-size: 1.75rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--charcoal);
+  margin-bottom: 12px;
+}
+
+.reg-success-card > p {
+  font-size: 1rem;
+  color: rgba(26, 26, 26, 0.6);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.reg-success-info {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 32px;
+}
+
+.reg-success-detail {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  font-size: 0.875rem;
+  color: rgba(26, 26, 26, 0.7);
+}
+
+.reg-success-detail:first-child {
+  border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+}
+
+.reg-success-detail i {
+  width: 20px;
+  color: var(--primary);
+}
+
+.reg-success-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.reg-success-buttons .reg-btn-primary,
+.reg-success-buttons .reg-btn-secondary {
+  text-decoration: none;
+  padding: 12px 24px;
+  font-size: 0.875rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .reg-hero {
+    padding: 120px 20px 48px;
+  }
+
+  .reg-form {
+    padding: 24px 20px;
+    border-radius: 16px;
+  }
+
+  .reg-progress {
+    gap: 0;
+  }
+
+  .reg-step-label {
+    display: none;
+  }
+
+  .reg-step-number {
+    width: 36px;
+    height: 36px;
+    font-size: 0.8125rem;
+  }
+
+  .reg-progress-line {
+    left: 40px;
+    right: 40px;
+    top: 18px;
+  }
+
+  .reg-form-nav {
+    flex-direction: column-reverse;
+  }
+
+  .reg-btn-primary,
+  .reg-btn-secondary,
+  .reg-btn-submit {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .reg-btn-primary {
+    margin-left: 0;
+  }
+
+  .reg-success-buttons {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .reg-title {
+    font-size: 1.75rem;
+  }
+
+  .reg-subtitle {
+    font-size: 1rem;
+  }
+
+  .reg-review-section {
+    padding: 16px;
+  }
+
+  .reg-success-card {
+    padding: 32px 24px;
+  }
+}
