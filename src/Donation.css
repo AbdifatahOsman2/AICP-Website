@@ -728,6 +728,14 @@
 
   .donate-back-link {
     padding: 12px;
+    width: 44px;
+    height: 44px;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .donate-back-link i {
+    margin: 0;
   }
 
   .donate-title {

@@ -500,6 +500,14 @@
 
   .ca-back-link {
     padding: 12px;
+    width: 44px;
+    height: 44px;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .ca-back-link i {
+    margin: 0;
   }
 
   .ca-hero-btn {

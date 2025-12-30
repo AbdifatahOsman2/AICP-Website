@@ -493,6 +493,14 @@
 
   .vf-back-link {
     padding: 12px;
+    width: 44px;
+    height: 44px;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .vf-back-link i {
+    margin: 0;
   }
 
   .vf-interest-btn {
