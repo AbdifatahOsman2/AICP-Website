@@ -42,9 +42,9 @@ export function Header({ isScrolled, mobileMenuOpen, setMobileMenuOpen }: Header
           {navItems.map((item) => (
             item.isRoute ? (
               <motion.span key={item.label}>
-                <Link 
+                <Link
                   to={item.href}
-                  style={{ color: 'inherit', textDecoration: 'none' }}
+                  className="nav-link"
                 >
                   <motion.span
                     whileHover={{ y: -2 }}
@@ -69,15 +69,17 @@ export function Header({ isScrolled, mobileMenuOpen, setMobileMenuOpen }: Header
         </nav>
 
         <div className="header-actions">
-          <motion.button 
-            className="donate-btn"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            transition={{ duration: 0.3 }}
-          >
-            <i className="fas fa-heart"></i>
-            <span>Donate</span>
-          </motion.button>
+          <Link to="/donate">
+            <motion.div
+              className="donate-btn"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.3 }}
+            >
+              <i className="fas fa-heart"></i>
+              <span>Donate</span>
+            </motion.div>
+          </Link>
           <button 
             className="mobile-menu-btn hide-desktop"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -116,14 +118,20 @@ export function Header({ isScrolled, mobileMenuOpen, setMobileMenuOpen }: Header
                 </a>
               )
             ))}
-            <motion.button 
-              className="btn btn-primary" 
-              style={{ marginTop: '16px', width: '100%' }}
-              whileTap={{ scale: 0.98 }}
+            <Link
+              to="/donate"
+              onClick={() => setMobileMenuOpen(false)}
+              style={{ textDecoration: 'none' }}
             >
-              <i className="fas fa-heart"></i>
-              Donate
-            </motion.button>
+              <motion.div
+                className="btn btn-primary"
+                style={{ marginTop: '16px', width: '100%' }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <i className="fas fa-heart"></i>
+                Donate
+              </motion.div>
+            </Link>
           </nav>
         </motion.div>
       )}

@@ -2,24 +2,26 @@ import React from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
 const footerLinks = {
   discover: [
     { label: 'About Us', href: '/about', isRoute: true },
-    { label: 'Our Imams', href: '#', isRoute: false },
-    { label: 'FAQ', href: '#', isRoute: false },
-    { label: 'Glossary', href: '#', isRoute: false },
+    { label: 'Our Imams', href: '/imams', isRoute: true },
+    { label: 'Islamic Calendar', href: '/islamic-calendar', isRoute: true },
   ],
   community: [
-    { label: 'Prayer Schedule', href: '#prayer-times' },
-    { label: 'Events', href: '#community' },
+    { label: 'Prayer Schedule', href: '/prayer-times', isRoute: true },
+    { label: 'Events', href: '/community', isRoute: true },
     { label: 'Videos', href: 'https://www.youtube.com/channel/UCZhSVWVHK0vfxZOOKWA_-ZQ', external: true },
-    { label: 'Contact Us', href: '#contact' },
+    { label: 'Contact Us', href: '#contact', isRoute: false },
   ],
   resources: [
-    { label: 'Night Prayer', href: '#', isRoute: false },
-    { label: 'Daily Prayers', href: '#prayer-times', isRoute: false },
+    { label: 'Daily Prayers', href: '/prayer-times', isRoute: true },
     { label: 'Islamic Education', href: '/education', isRoute: true },
-    { label: 'Community Aid', href: '#', isRoute: false },
+    { label: 'Community Aid', href: '/community-aid', isRoute: true },
   ],
 };
 
@@ -44,7 +46,7 @@ export function Footer() {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-brand">
-            <a href="#" className="logo footer-logo">
+            <Link to="/" className="logo footer-logo" onClick={scrollToTop}>
               <div className="logo-icon">
                 <i className="fas fa-mosque"></i>
               </div>
@@ -52,7 +54,7 @@ export function Footer() {
                 <span className="logo-name">Al Rahma</span>
                 <span className="logo-tagline">Islamic Center of Phoenix</span>
               </div>
-            </a>
+            </Link>
             <address className="footer-address">
               2916 E McDowell Rd unit 15<br />
               Phoenix, AZ 85008
@@ -83,9 +85,10 @@ export function Footer() {
             {footerLinks.discover.map((link) => (
               link.isRoute ? (
                 <motion.span key={link.label}>
-                  <Link 
+                  <Link
                     to={link.href}
                     className="footer-link"
+                    onClick={scrollToTop}
                   >
                     <motion.span
                       whileHover={{ x: 4, color: '#083475' }}
@@ -97,9 +100,9 @@ export function Footer() {
                   </Link>
                 </motion.span>
               ) : (
-                <motion.a 
-                  key={link.label} 
-                  href={link.href} 
+                <motion.a
+                  key={link.label}
+                  href={link.href}
                   className="footer-link"
                   whileHover={{ x: 4, color: '#083475' }}
                   transition={{ duration: 0.3 }}
@@ -113,28 +116,12 @@ export function Footer() {
           <div className="footer-links-column">
             <h5 className="footer-links-title">Community</h5>
             {footerLinks.community.map((link) => (
-              <motion.a 
-                key={link.label} 
-                href={link.href}
-                target={link.external ? '_blank' : undefined}
-                rel={link.external ? 'noopener noreferrer' : undefined}
-                className="footer-link"
-                whileHover={{ x: 4, color: '#083475' }}
-                transition={{ duration: 0.3 }}
-              >
-                {link.label}
-              </motion.a>
-            ))}
-          </div>
-
-          <div className="footer-links-column">
-            <h5 className="footer-links-title">Resources</h5>
-            {footerLinks.resources.map((link) => (
               link.isRoute ? (
                 <motion.span key={link.label}>
-                  <Link 
+                  <Link
                     to={link.href}
                     className="footer-link"
+                    onClick={scrollToTop}
                   >
                     <motion.span
                       whileHover={{ x: 4, color: '#083475' }}
@@ -146,9 +133,44 @@ export function Footer() {
                   </Link>
                 </motion.span>
               ) : (
-                <motion.a 
-                  key={link.label} 
-                  href={link.href} 
+                <motion.a
+                  key={link.label}
+                  href={link.href}
+                  target={link.external ? '_blank' : undefined}
+                  rel={link.external ? 'noopener noreferrer' : undefined}
+                  className="footer-link"
+                  whileHover={{ x: 4, color: '#083475' }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {link.label}
+                </motion.a>
+              )
+            ))}
+          </div>
+
+          <div className="footer-links-column">
+            <h5 className="footer-links-title">Resources</h5>
+            {footerLinks.resources.map((link) => (
+              link.isRoute ? (
+                <motion.span key={link.label}>
+                  <Link
+                    to={link.href}
+                    className="footer-link"
+                    onClick={scrollToTop}
+                  >
+                    <motion.span
+                      whileHover={{ x: 4, color: '#083475' }}
+                      transition={{ duration: 0.3 }}
+                      style={{ display: 'inline-block' }}
+                    >
+                      {link.label}
+                    </motion.span>
+                  </Link>
+                </motion.span>
+              ) : (
+                <motion.a
+                  key={link.label}
+                  href={link.href}
                   className="footer-link"
                   whileHover={{ x: 4, color: '#083475' }}
                   transition={{ duration: 0.3 }}
