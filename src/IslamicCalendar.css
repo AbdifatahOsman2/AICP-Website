@@ -1,0 +1,756 @@
+/* Islamic Calendar Page Styles */
+
+.islamic-calendar-page {
+  min-height: 100vh;
+  background: var(--background);
+}
+
+/* Back Navigation */
+.ic-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 20px 32px;
+  background: transparent;
+}
+
+.ic-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-decoration: none;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.ic-back-link:hover {
+  background: var(--white);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  transform: translateX(-4px);
+}
+
+.ic-back-link i {
+  font-size: 0.85rem;
+  color: var(--primary);
+}
+
+/* Hero Section */
+.ic-hero {
+  position: relative;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary) 0%, #0a4a9e 100%);
+  padding: 120px 24px 80px;
+  overflow: hidden;
+}
+
+.ic-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.5;
+}
+
+.ic-hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 700px;
+}
+
+.ic-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 16px;
+}
+
+.ic-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+
+.ic-subtitle {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+}
+
+/* Upcoming Dates Banner */
+.ic-upcoming {
+  position: relative;
+  margin-top: -40px;
+  padding: 0 24px 60px;
+  z-index: 2;
+}
+
+.ic-upcoming-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.ic-upcoming-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ic-upcoming-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.ic-upcoming-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary) 0%, #0a4a9e 100%);
+  border-radius: 12px;
+  color: var(--white);
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.ic-upcoming-info h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.ic-upcoming-info p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 2px;
+}
+
+.ic-hijri {
+  font-size: 0.75rem;
+  color: var(--primary);
+  font-weight: 500;
+}
+
+/* Section Headers */
+.ic-section-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.ic-section-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary) 0%, #0a4a9e 100%);
+  border-radius: 50%;
+  color: var(--white);
+  font-size: 1.5rem;
+}
+
+.ic-section-icon.gold {
+  background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+}
+
+.ic-section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.ic-section-description {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+}
+
+/* Ramadan Section */
+.ic-ramadan {
+  padding: 80px 24px;
+  background: var(--background);
+}
+
+/* Tabs */
+.ic-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.ic-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: var(--white);
+  border: 2px solid var(--border);
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ic-tab:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.ic-tab.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--white);
+}
+
+.ic-tab i {
+  font-size: 1rem;
+}
+
+/* Schedule Table */
+.ic-schedule-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--white);
+  border-radius: 20px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.ic-schedule-header {
+  padding: 20px 24px;
+  background: var(--background);
+  border-bottom: 1px solid var(--border);
+}
+
+.ic-schedule-legend {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.ic-schedule-legend span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ic-schedule-legend i {
+  color: var(--primary);
+}
+
+.ic-schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ic-schedule-table th {
+  padding: 16px 20px;
+  text-align: left;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  background: var(--background);
+  border-bottom: 1px solid var(--border);
+}
+
+.ic-schedule-table td {
+  padding: 16px 20px;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border);
+}
+
+.ic-schedule-table tbody tr:hover {
+  background: rgba(8, 52, 117, 0.02);
+}
+
+.ic-schedule-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.ic-day-cell {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.ic-suhoor {
+  color: #6B7280;
+}
+
+.ic-iftar {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.ic-schedule-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  background: var(--background);
+  border-top: 1px solid var(--border);
+}
+
+.ic-schedule-note i {
+  color: var(--primary);
+}
+
+.ic-download-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 18px;
+  background: var(--primary);
+  color: var(--white);
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.ic-download-btn:hover {
+  background: #062a5c;
+}
+
+/* Events Grid */
+.ic-events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.ic-event-card {
+  display: flex;
+  gap: 20px;
+  padding: 28px;
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ic-event-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.ic-event-icon {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(8, 52, 117, 0.1) 0%, rgba(8, 52, 117, 0.05) 100%);
+  border-radius: 14px;
+  color: var(--primary);
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.ic-event-content h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.ic-event-content p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.ic-event-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.ic-event-meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ic-event-meta i {
+  color: var(--primary);
+  font-size: 0.75rem;
+}
+
+/* Eid Section */
+.ic-eid {
+  padding: 80px 24px;
+  background: linear-gradient(180deg, var(--white) 0%, var(--background) 100%);
+}
+
+.ic-eid-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  max-width: 900px;
+  margin: 0 auto 48px;
+}
+
+.ic-eid-card {
+  position: relative;
+  padding: 36px;
+  background: var(--white);
+  border-radius: 20px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.ic-eid-card:hover {
+  transform: translateY(-4px);
+}
+
+.ic-eid-card.featured {
+  border: 2px solid var(--primary);
+}
+
+.ic-eid-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 6px 14px;
+  background: var(--primary);
+  color: var(--white);
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 20px;
+}
+
+.ic-eid-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+.ic-eid-date {
+  margin-bottom: 24px;
+}
+
+.ic-eid-gregorian {
+  display: block;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.ic-eid-hijri {
+  font-size: 0.9rem;
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.ic-eid-times {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+  padding: 20px;
+  background: var(--background);
+  border-radius: 12px;
+}
+
+.ic-eid-prayer {
+  flex: 1;
+  text-align: center;
+}
+
+.ic-prayer-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.ic-prayer-time {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.ic-eid-location {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.ic-eid-location i {
+  color: var(--primary);
+}
+
+/* Eid Guidelines */
+.ic-eid-info {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 32px;
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.ic-eid-info h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.ic-eid-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.ic-eid-info li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.ic-eid-info li i {
+  color: #10B981;
+  font-size: 0.85rem;
+}
+
+/* CTA Section */
+.ic-cta {
+  padding: 80px 24px;
+  background: linear-gradient(135deg, var(--primary) 0%, #0a4a9e 100%);
+}
+
+.ic-cta-content {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ic-cta-content h3 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.ic-cta-content p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 28px;
+}
+
+.ic-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 36px;
+  background: var(--white);
+  color: var(--primary);
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ic-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .ic-upcoming-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ic-eid-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .ic-header {
+    padding: 16px 20px;
+  }
+
+  .ic-hero {
+    min-height: 45vh;
+    padding: 100px 20px 60px;
+  }
+
+  .ic-upcoming {
+    margin-top: -30px;
+  }
+
+  .ic-upcoming-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .ic-tabs {
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .ic-tab {
+    justify-content: center;
+  }
+
+  .ic-schedule-table th,
+  .ic-schedule-table td {
+    padding: 12px 14px;
+    font-size: 0.85rem;
+  }
+
+  .ic-schedule-legend {
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .ic-events-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ic-event-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .ic-event-icon {
+    margin: 0 auto;
+  }
+
+  .ic-event-meta {
+    justify-content: center;
+  }
+
+  .ic-eid-card {
+    padding: 28px;
+  }
+
+  .ic-eid-times {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .ic-eid-info ul {
+    grid-template-columns: 1fr;
+  }
+
+  .ic-ramadan,
+  .ic-eid {
+    padding: 60px 20px;
+  }
+
+  .ic-cta {
+    padding: 60px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ic-back-link span {
+    display: none;
+  }
+
+  .ic-back-link {
+    padding: 12px;
+  }
+
+  .ic-schedule-table {
+    font-size: 0.8rem;
+  }
+
+  .ic-schedule-table th,
+  .ic-schedule-table td {
+    padding: 10px 8px;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .ic-back-link,
+  .ic-upcoming-card,
+  .ic-event-card,
+  .ic-eid-card,
+  .ic-cta-btn {
+    transition: none;
+  }
+
+  .ic-back-link:hover,
+  .ic-upcoming-card:hover,
+  .ic-event-card:hover,
+  .ic-eid-card:hover {
+    transform: none;
+  }
+}
