@@ -80,7 +80,7 @@ export function AboutPage() {
           initial="hidden"
           animate={heroInView ? 'visible' : 'hidden'}
         >
-          <img src="/side.png" alt="Al-Rahma Islamic Center Campus" />
+          <img src="/side.png" alt="Al-Rahma Islamic Center Campus" loading="lazy" decoding="async" />
           <div className="about-image-overlay"></div>
           <div className="about-image-caption">
             <span className="about-image-title">The Campus</span>
@@ -177,3 +177,4 @@ export function AboutPage() {
   );
 }
 
+export default AboutPage;

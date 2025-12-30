@@ -112,7 +112,7 @@ const Imams: React.FC = () => {
                 variants={fadeUp}
               >
                 <div className="imam-image-wrapper">
-                  <img src={imam.image} alt={imam.name} className="imam-image" />
+                  <img src={imam.image} alt={imam.name} className="imam-image" loading="lazy" decoding="async" />
                   {index === 0 && <span className="imam-badge">Senior Imam</span>}
                 </div>
                 <div className="imam-info">

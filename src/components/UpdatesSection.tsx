@@ -68,7 +68,7 @@ export function UpdatesSection() {
                 whileHover={{ scale: 1.03 }}
                 transition={{ duration: 0.6 }}
               >
-                <img src={update.image} alt={update.title} />
+                <img src={update.image} alt={update.title} loading="lazy" decoding="async" />
                 <span className="badge badge-glass">{update.category}</span>
               </motion.div>
               <div className="update-card-content">

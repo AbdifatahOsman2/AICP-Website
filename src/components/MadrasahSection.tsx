@@ -20,9 +20,11 @@ export function MadrasahSection() {
             transition={{ duration: 1.2, ease: easeOutExpo }}
             whileHover={{ scale: 1.02 }}
           >
-            <img 
+            <img
               src="/education.png"
               alt="Arabic and Islamic education at Al-Rahma"
+              loading="lazy"
+              decoding="async"
             />
             <div className="feature-image-overlay"></div>
             <motion.span 

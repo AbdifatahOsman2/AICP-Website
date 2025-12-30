@@ -2371,3 +2371,35 @@ h1, h2, h3, h4, h5, h6 {
     top: 44px;
   }
 }
+
+/* ============================================
+   Page Loader - Code Splitting Fallback
+   ============================================ */
+.page-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: var(--background-light);
+}
+
+.loader-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(8, 52, 117, 0.1);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* ============================================
+   Lazy Image Loading
+   ============================================ */
+img[loading="lazy"] {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+img.lazy-loading {
+  opacity: 0;
+}

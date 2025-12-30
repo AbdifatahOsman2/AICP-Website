@@ -97,7 +97,7 @@ const CommunityAid: React.FC = () => {
       {/* Hero Section with Image */}
       <section className="ca-hero" ref={heroRef}>
         <div className="ca-hero-image">
-          <img src="/inside.jpg" alt="Inside Al Rahma Islamic Center" />
+          <img src="/inside.jpg" alt="Inside Al Rahma Islamic Center" loading="lazy" decoding="async" />
           <div className="ca-hero-overlay"></div>
         </div>
         <motion.div
@@ -155,7 +155,7 @@ const CommunityAid: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <img src="/Outside cleaning.png" alt="Community volunteers cleaning outside the masjid" />
+              <img src="/Outside cleaning.png" alt="Community volunteers cleaning outside the masjid" loading="lazy" decoding="async" />
             </motion.div>
             <motion.div
               className="ca-featured-content"

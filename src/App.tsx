@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import {
   Header,
@@ -12,15 +12,26 @@ import {
   NewsletterSection,
   Footer
 } from './components';
-import { AboutPage, CommunityPage, PrayerTimesPage } from './pages';
-import Education from './pages/Education';
-import Registration from './pages/Registration';
-import Donation from './pages/Donation';
-import IslamicCalendar from './pages/IslamicCalendar';
-import Imams from './pages/Imams';
-import CommunityAid from './pages/CommunityAid';
-import VolunteerForm from './pages/VolunteerForm';
 import './App.css';
+
+// Lazy load page components for better performance
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const CommunityPage = lazy(() => import('./pages/CommunityPage'));
+const PrayerTimesPage = lazy(() => import('./pages/PrayerTimesPage'));
+const Education = lazy(() => import('./pages/Education'));
+const Registration = lazy(() => import('./pages/Registration'));
+const Donation = lazy(() => import('./pages/Donation'));
+const IslamicCalendar = lazy(() => import('./pages/IslamicCalendar'));
+const Imams = lazy(() => import('./pages/Imams'));
+const CommunityAid = lazy(() => import('./pages/CommunityAid'));
+const VolunteerForm = lazy(() => import('./pages/VolunteerForm'));
+
+// Loading fallback component
+const PageLoader = () => (
+  <div className="page-loader">
+    <div className="loader-spinner"></div>
+  </div>
+);
 
 function HomePage() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -56,19 +67,21 @@ function HomePage() {
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/about" element={<AboutPage />} />
-      <Route path="/education" element={<Education />} />
-      <Route path="/community" element={<CommunityPage />} />
-      <Route path="/prayer-times" element={<PrayerTimesPage />} />
-      <Route path="/register" element={<Registration />} />
-      <Route path="/donate" element={<Donation />} />
-      <Route path="/islamic-calendar" element={<IslamicCalendar />} />
-      <Route path="/imams" element={<Imams />} />
-      <Route path="/community-aid" element={<CommunityAid />} />
-      <Route path="/volunteer" element={<VolunteerForm />} />
-    </Routes>
+    <Suspense fallback={<PageLoader />}>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/education" element={<Education />} />
+        <Route path="/community" element={<CommunityPage />} />
+        <Route path="/prayer-times" element={<PrayerTimesPage />} />
+        <Route path="/register" element={<Registration />} />
+        <Route path="/donate" element={<Donation />} />
+        <Route path="/islamic-calendar" element={<IslamicCalendar />} />
+        <Route path="/imams" element={<Imams />} />
+        <Route path="/community-aid" element={<CommunityAid />} />
+        <Route path="/volunteer" element={<VolunteerForm />} />
+      </Routes>
+    </Suspense>
   );
 }
 

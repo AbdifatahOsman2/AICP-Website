@@ -127,7 +127,7 @@ const Education: React.FC = () => {
           initial="hidden"
           animate={heroInView ? 'visible' : 'hidden'}
         >
-          <img src="/class2.png" alt="Students learning at AICP" />
+          <img src="/class2.png" alt="Students learning at AICP" loading="lazy" decoding="async" />
           <div className="about-image-overlay"></div>
           <div className="about-image-caption">
             <span className="about-image-title">Weekend Madrasah</span>
@@ -275,7 +275,7 @@ const Education: React.FC = () => {
               className="edu-schedule-image"
               variants={scaleIn}
             >
-              <img src="/class1.png" alt="AICP Learning Environment" />
+              <img src="/class1.png" alt="AICP Learning Environment" loading="lazy" decoding="async" />
             </motion.div>
           </motion.div>
         </div>
@@ -320,7 +320,7 @@ const Education: React.FC = () => {
               variants={scaleIn}
             >
               <div className="edu-phone-frame">
-                <img src="/pic1 1.png" alt="Markaz Al Najah App" className="edu-phone-screenshot" />
+                <img src="/pic1 1.png" alt="Markaz Al Najah App" className="edu-phone-screenshot" loading="lazy" decoding="async" />
               </div>
             </motion.div>
           </motion.div>

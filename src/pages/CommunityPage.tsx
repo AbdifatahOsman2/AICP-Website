@@ -3,55 +3,37 @@ import { motion, Variants, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import '../Community.css';
 
-// Gallery images - will be replaced with Instagram API data
+// Gallery images - Community events and gatherings
 const galleryImages = [
   {
     id: 1,
-    images: ['/gallery/BBQ1.jpg'],
+    images: ['/gallery/BBQ1.jpg', '/gallery/BBQ2.jpg', '/gallery/BBQ3.jpg'],
     title: 'Community BBQ',
     description: 'Annual summer gathering bringing families together',
   },
   {
     id: 2,
-    images: ['/gallery/BBQ2.jpg', '/gallery/BBQ3.jpg', '/gallery/BBQ4.jpg'],
-    title: 'Community Gathering',
-    description: 'Sharing meals and building bonds',
-  },
-  {
-    id: 3,
     images: ['/gallery/quranGrad.jpg'],
     title: 'Quran Graduation',
     description: 'Celebrating our students\' achievements in Quran memorization',
   },
   {
+    id: 3,
+    images: ['/gallery/BBQ4.jpg', '/gallery/BBQ5.jpg'],
+    title: 'Community Gathering',
+    description: 'Sharing meals and building bonds as one family',
+  },
+  {
     id: 4,
-    images: ['/gallery/BBQ3.jpg', '/gallery/BBQ5.jpg', '/gallery/BBQ6.jpg'],
-    title: 'Outdoor Event',
-    description: 'Beautiful day at the masjid grounds',
+    images: ['/gallery/604913093_18212017039315123_3491130923211631296_n.jpg'],
+    title: 'Special Event',
+    description: 'Memorable moments from our community programs',
   },
   {
     id: 5,
-    images: ['/gallery/BBQ4.jpg'],
-    title: 'Family Picnic',
-    description: 'Enjoying time together as a community',
-  },
-  {
-    id: 6,
-    images: ['/gallery/BBQ5.jpg', '/gallery/BBQ1.jpg'],
-    title: 'Faculty Meeting',
-    description: 'Updates on the new semester plan',
-  },
-  {
-    id: 7,
     images: ['/gallery/BBQ6.jpg'],
-    title: 'Volunteer Day',
-    description: 'Community members coming together to serve',
-  },
-  {
-    id: 8,
-    images: ['/gallery/604913093_18212017039315123_3491130923211631296_n.jpg', '/gallery/quranGrad.jpg', '/gallery/BBQ2.jpg'],
-    title: 'Special Event',
-    description: 'Memorable moments from our community events',
+    title: 'Outdoor Activities',
+    description: 'Enjoying time together at the masjid grounds',
   },
 ];
 
@@ -150,11 +132,13 @@ const CommunityPage: React.FC = () => {
               >
                 <div className="gallery-images-container">
                   {image.images.map((src, imgIndex) => (
-                    <img 
+                    <img
                       key={imgIndex}
-                      src={src} 
+                      src={src}
                       alt={`${image.title} ${imgIndex + 1}`}
                       className="gallery-image"
+                      loading="lazy"
+                      decoding="async"
                     />
                   ))}
                 </div>

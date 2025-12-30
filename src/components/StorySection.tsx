@@ -53,9 +53,11 @@ export function StorySection() {
             transition={{ duration: 1.2, ease: easeOutExpo }}
             whileHover={{ scale: 1.02 }}
           >
-            <img 
+            <img
               src="/plans.png"
               alt="Al Rahma Islamic Center architectural plans"
+              loading="lazy"
+              decoding="async"
             />
             <motion.span 
               className="badge badge-primary feature-badge right"
@@ -74,9 +76,11 @@ export function StorySection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 1.2, ease: easeOutExpo }}
           >
-            <img 
+            <img
               src="/side.png"
               alt="Al Rahma Islamic Center side view"
+              loading="lazy"
+              decoding="async"
             />
             <div className="feature-image-overlay"></div>
             <motion.span 
