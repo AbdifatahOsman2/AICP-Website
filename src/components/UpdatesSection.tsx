@@ -8,21 +8,21 @@ const updates = [
     date: 'Every Night',
     title: 'The Blessed Hour of the Night',
     description: 'There is an hour of the night which, no Muslim person encounters it and asks for a good thing, but Allah grants it.',
-    image: 'https://images.unsplash.com/photo-1609599006353-e629aaabfeae?q=80&w=2940&auto=format&fit=crop',
+    image: '/TheBlessedHourOfTheNight.jpg',
   },
   {
     category: 'Community',
     date: 'Ongoing',
     title: 'Helping Those in Need',
     description: 'If Allah blessed us with money, good health or knowledge, we should share with those who are less fortunate.',
-    image: 'https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=80&w=2940&auto=format&fit=crop',
+    image: '/HelpThoseInNeed.jpg',
   },
   {
     category: 'Daily Prayers',
     date: '5 Times Daily',
     title: 'Join Us for Salah',
     description: 'Come pray with us at Al-Rahma. Our doors are open for all five daily prayers.',
-    image: 'https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?q=80&w=2940&auto=format&fit=crop',
+    image: '/JoinUsForSalah.jpg',
   },
 ];
 
