@@ -1,0 +1,387 @@
+/* Our Imams Page Styles */
+
+.imams-page {
+  min-height: 100vh;
+  background: var(--background);
+}
+
+/* Back Navigation */
+.imams-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 20px 32px;
+  background: transparent;
+}
+
+.imams-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-decoration: none;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.imams-back-link:hover {
+  background: var(--white);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  transform: translateX(-4px);
+}
+
+.imams-back-link i {
+  font-size: 0.85rem;
+  color: var(--primary);
+}
+
+/* Hero Section */
+.imams-hero {
+  position: relative;
+  min-height: 45vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary) 0%, #0a4a9e 100%);
+  padding: 120px 24px 80px;
+  overflow: hidden;
+}
+
+.imams-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.5;
+}
+
+.imams-hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 700px;
+}
+
+.imams-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 16px;
+}
+
+.imams-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+
+.imams-subtitle {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+}
+
+/* Imams Content */
+.imams-content {
+  padding: 80px 24px;
+}
+
+.imams-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Imam Card */
+.imam-card {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 48px;
+  padding: 40px;
+  background: var(--white);
+  border-radius: 24px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.imam-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+.imam-card.senior {
+  border: 2px solid var(--primary);
+}
+
+.imam-image-wrapper {
+  position: relative;
+}
+
+.imam-image {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.imam-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 8px 16px;
+  background: var(--primary);
+  color: var(--white);
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(8, 52, 117, 0.3);
+}
+
+.imam-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.imam-name {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.imam-title {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+
+.imam-description {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+.imam-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.imam-highlights li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.imam-highlights li i {
+  color: #10B981;
+  font-size: 0.8rem;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+/* CTA Section */
+.imams-cta {
+  padding: 80px 24px;
+  background: linear-gradient(135deg, var(--primary) 0%, #0a4a9e 100%);
+}
+
+.imams-cta-content {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.imams-cta-content h3 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.imams-cta-content p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 28px;
+}
+
+.imams-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 36px;
+  background: var(--white);
+  color: var(--primary);
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.imams-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer */
+.imams-footer {
+  padding: 40px 24px;
+  background: var(--white);
+  border-top: 1px solid var(--border);
+}
+
+.imams-footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.imams-footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.imams-footer-brand .logo-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  border-radius: 10px;
+  color: var(--white);
+  font-size: 1rem;
+}
+
+.imams-footer-brand .logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.imams-footer-brand .logo-name {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.imams-footer-brand .logo-tagline {
+  font-size: 0.75rem;
+}
+
+.imams-footer-copyright {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* Responsive Styles */
+@media (max-width: 900px) {
+  .imam-card {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 32px;
+  }
+
+  .imam-image-wrapper {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .imam-info {
+    text-align: center;
+  }
+
+  .imam-highlights {
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .imams-header {
+    padding: 16px 20px;
+  }
+
+  .imams-hero {
+    min-height: 40vh;
+    padding: 100px 20px 60px;
+  }
+
+  .imams-content {
+    padding: 60px 20px;
+  }
+
+  .imam-card {
+    padding: 24px;
+  }
+
+  .imam-name {
+    font-size: 1.5rem;
+  }
+
+  .imams-cta {
+    padding: 60px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .imams-back-link span {
+    display: none;
+  }
+
+  .imams-back-link {
+    padding: 12px;
+  }
+
+  .imam-highlights li {
+    font-size: 0.85rem;
+    text-align: left;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .imam-card,
+  .imams-back-link,
+  .imams-cta-btn {
+    transition: none;
+  }
+
+  .imam-card:hover,
+  .imams-back-link:hover {
+    transform: none;
+  }
+}
