@@ -789,6 +789,88 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 4px;
 }
 
+/* Prayer Bar - Mobile Responsive */
+@media (max-width: 600px) {
+  .prayer-bar {
+    padding: 16px 20px;
+    gap: 16px;
+  }
+
+  .prayer-bar-next {
+    padding-right: 0;
+    justify-content: center;
+  }
+
+  .prayer-bar-times {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .prayer-time-item {
+    padding: 10px 8px;
+  }
+
+  .prayer-time-name {
+    font-size: 0.5625rem;
+  }
+
+  .prayer-time-value {
+    font-size: 0.9375rem;
+  }
+
+  .prayer-time-item.active .prayer-time-value {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .prayer-bar-wrapper {
+    padding: 1rem;
+  }
+
+  .prayer-bar {
+    padding: 14px 16px;
+    gap: 12px;
+    border-radius: 12px;
+  }
+
+  .prayer-bar-next-info .label {
+    font-size: 0.5625rem;
+  }
+
+  .prayer-bar-next-name {
+    font-size: 0.8125rem;
+  }
+
+  .countdown-text {
+    display: none;
+  }
+
+  .prayer-bar-times {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+  }
+
+  .prayer-time-item {
+    padding: 8px 4px;
+    gap: 4px;
+  }
+
+  .prayer-time-name {
+    font-size: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  .prayer-time-value {
+    font-size: 0.8125rem;
+  }
+
+  .prayer-time-item.active .prayer-time-value {
+    font-size: 0.875rem;
+  }
+}
+
 /* Prayer Times Standalone Variant */
 .prayer-times-standalone {
   background: var(--white);
