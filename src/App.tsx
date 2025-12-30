@@ -14,6 +14,12 @@ import {
 } from './components';
 import { AboutPage, CommunityPage, PrayerTimesPage } from './pages';
 import Education from './pages/Education';
+import Registration from './pages/Registration';
+import Donation from './pages/Donation';
+import IslamicCalendar from './pages/IslamicCalendar';
+import Imams from './pages/Imams';
+import CommunityAid from './pages/CommunityAid';
+import VolunteerForm from './pages/VolunteerForm';
 import './App.css';
 
 function HomePage() {
@@ -56,6 +62,12 @@ function App() {
       <Route path="/education" element={<Education />} />
       <Route path="/community" element={<CommunityPage />} />
       <Route path="/prayer-times" element={<PrayerTimesPage />} />
+      <Route path="/register" element={<Registration />} />
+      <Route path="/donate" element={<Donation />} />
+      <Route path="/islamic-calendar" element={<IslamicCalendar />} />
+      <Route path="/imams" element={<Imams />} />
+      <Route path="/community-aid" element={<CommunityAid />} />
+      <Route path="/volunteer" element={<VolunteerForm />} />
     </Routes>
   );
 }

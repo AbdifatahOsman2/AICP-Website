@@ -9,4 +9,18 @@ export { ConnectSection } from './ConnectSection';
 export { NewsletterSection } from './NewsletterSection';
 export { Footer } from './Footer';
 export { PrayerTimesBar } from './PrayerTimesBar';
-export { FadeUp, fadeUp, fadeIn, staggerContainer, scaleIn } from './animations';
+export {
+  FadeUp,
+  fadeUp,
+  fadeIn,
+  staggerContainer,
+  scaleIn,
+  MagneticButton,
+  SuccessButton,
+  ParallaxImage,
+  PulseIndicator,
+  JumuahBanner,
+  springConfig,
+  fastSpring,
+  durations
+} from './animations';

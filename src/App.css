@@ -398,7 +398,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-desktop a {
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--white);
   text-decoration: none;
   font-size: 0.8125rem;
   font-weight: 700;
@@ -1203,12 +1203,15 @@ h1, h2, h3, h4, h5, h6 {
 .feature-image-plans {
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 
+  aspect-ratio: 4 / 3;
+  box-shadow:
     0 30px 60px -15px rgba(0, 0, 0, 0.4),
     0 10px 20px -10px rgba(0, 0, 0, 0.3);
 }
 
 .feature-image-plans img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
@@ -2092,5 +2095,214 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 768px) {
   .about-nav-links {
     display: none;
+  }
+}
+
+/* ============================================
+   Micro-Interactions & Animations
+   Performance optimized (under 300ms)
+   ============================================ */
+
+/* Screen reader only - for accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Magnetic Button Wrapper */
+.magnetic-wrapper {
+  display: inline-block;
+}
+
+/* Success Button Styles */
+.success-button {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background-color 0.25s ease, transform 0.15s ease;
+}
+
+.success-button-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.success-button-loading,
+.success-button-success {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.success-button-success {
+  color: #fff;
+}
+
+.success-button.success {
+  background-color: #22c55e !important;
+  border-color: #22c55e !important;
+  color: #fff !important;
+}
+
+.success-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Jumu'ah Banner Styles */
+.jumuah-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  padding: 10px 24px;
+}
+
+.jumuah-banner-content {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.jumuah-banner i {
+  color: var(--secondary);
+  font-size: 1rem;
+}
+
+.jumuah-text {
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.jumuah-text strong {
+  color: var(--secondary);
+  font-weight: 700;
+}
+
+.jumuah-time {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8125rem;
+  padding-left: 16px;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.jumuah-live-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  background: rgba(239, 68, 68, 0.9);
+  color: #fff;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  border-radius: 4px;
+}
+
+.jumuah-live-dot {
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  border-radius: 50%;
+  animation: livePulse 1.5s ease-in-out infinite;
+}
+
+@keyframes livePulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+/* Parallax container styles */
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-image {
+  width: 100%;
+  height: 120%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+/* Hero background parallax enhancement */
+.hero-bg {
+  will-change: transform;
+  transform-origin: center center;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .jumuah-live-dot,
+  .success-spinner,
+  .pulse-indicator span {
+    animation: none !important;
+  }
+
+  .hero-bg {
+    transform: none !important;
+  }
+
+  .magnetic-wrapper {
+    transform: none !important;
+  }
+
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* Mobile adjustments for Jumu'ah banner */
+@media (max-width: 768px) {
+  .jumuah-banner {
+    padding: 8px 16px;
+  }
+
+  .jumuah-banner-content {
+    gap: 10px;
+  }
+
+  .jumuah-text {
+    font-size: 0.8125rem;
+  }
+
+  .jumuah-time {
+    display: none;
+  }
+
+  /* Adjust header position when banner is visible */
+  .jumuah-banner + .header,
+  .jumuah-banner ~ .header {
+    top: 44px;
   }
 }
