@@ -1,0 +1,523 @@
+/* Volunteer Form Page Styles */
+
+.volunteer-form-page {
+  min-height: 100vh;
+  background: var(--background);
+}
+
+/* Back Navigation */
+.vf-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 20px 32px;
+  background: transparent;
+}
+
+.vf-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-decoration: none;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.vf-back-link:hover {
+  background: var(--white);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  transform: translateX(-4px);
+}
+
+.vf-back-link i {
+  font-size: 0.85rem;
+  color: var(--primary);
+}
+
+/* Hero Section */
+.vf-hero {
+  padding: 120px 24px 60px;
+  background: linear-gradient(135deg, var(--primary) 0%, #0a4a9e 100%);
+  text-align: center;
+}
+
+.vf-hero-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.vf-hero-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+}
+
+.vf-hero-icon i {
+  font-size: 1.75rem;
+  color: var(--white);
+}
+
+.vf-hero h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.vf-hero p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Form Content */
+.vf-content {
+  padding: 48px 24px 80px;
+  margin-top: -20px;
+}
+
+.vf-form {
+  max-width: 700px;
+  margin: 0 auto;
+  background: var(--white);
+  border-radius: 20px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+/* Form Sections */
+.vf-section {
+  padding: 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+.vf-section:last-of-type {
+  border-bottom: none;
+}
+
+.vf-section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+.vf-section-title i {
+  color: var(--primary);
+  font-size: 1rem;
+}
+
+.vf-section-hint {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+/* Form Grid */
+.vf-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* Input Groups */
+.vf-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.vf-input-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.vf-input-group label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.vf-input-group input,
+.vf-input-group select,
+.vf-input-group textarea {
+  padding: 14px 16px;
+  font-size: 0.95rem;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  background: var(--background);
+  color: var(--text-primary);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-family: inherit;
+}
+
+.vf-input-group input:focus,
+.vf-input-group select:focus,
+.vf-input-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(8, 52, 117, 0.1);
+}
+
+.vf-input-group input::placeholder,
+.vf-input-group textarea::placeholder {
+  color: #9CA3AF;
+}
+
+.vf-input-group select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236B7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+
+.vf-input-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Interest Buttons */
+.vf-interests-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.vf-interest-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: var(--background);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.vf-interest-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.vf-interest-btn.active {
+  background: rgba(8, 52, 117, 0.08);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.vf-interest-btn i:first-child {
+  font-size: 1rem;
+}
+
+.vf-interest-btn .vf-check {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 0.75rem;
+  color: var(--primary);
+}
+
+/* Submit Section */
+.vf-submit-section {
+  padding: 32px;
+  background: var(--background);
+  text-align: center;
+}
+
+.vf-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 320px;
+  padding: 18px 32px;
+  background: var(--primary);
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.vf-submit-btn:hover:not(:disabled) {
+  background: #062a5c;
+  transform: translateY(-2px);
+}
+
+.vf-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.vf-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.vf-submit-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.vf-submit-note i {
+  color: #10B981;
+}
+
+/* Success State */
+.vf-success-container {
+  min-height: calc(100vh - 100px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 24px 80px;
+}
+
+.vf-success {
+  max-width: 500px;
+  padding: 48px;
+  background: var(--white);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.vf-success-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  border-radius: 50%;
+}
+
+.vf-success-icon i {
+  font-size: 2rem;
+  color: var(--white);
+}
+
+.vf-success h2 {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.vf-success p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.vf-success-note {
+  font-style: italic;
+  color: var(--primary);
+}
+
+.vf-success-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.vf-btn-secondary,
+.vf-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 24px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.vf-btn-secondary {
+  background: var(--background);
+  color: var(--text-primary);
+  border: 2px solid var(--border);
+}
+
+.vf-btn-secondary:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.vf-btn-primary {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.vf-btn-primary:hover {
+  background: #062a5c;
+}
+
+/* Footer */
+.vf-footer {
+  padding: 40px 24px;
+  background: var(--white);
+  border-top: 1px solid var(--border);
+}
+
+.vf-footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.vf-footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.vf-footer-brand .logo-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  border-radius: 10px;
+  color: var(--white);
+  font-size: 1rem;
+}
+
+.vf-footer-brand .logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.vf-footer-brand .logo-name {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.vf-footer-brand .logo-tagline {
+  font-size: 0.75rem;
+}
+
+.vf-footer-copyright {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .vf-header {
+    padding: 16px 20px;
+  }
+
+  .vf-hero {
+    padding: 100px 20px 48px;
+  }
+
+  .vf-content {
+    padding: 32px 16px 60px;
+  }
+
+  .vf-section {
+    padding: 24px 20px;
+  }
+
+  .vf-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vf-interests-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vf-success {
+    padding: 32px 24px;
+  }
+
+  .vf-success-actions {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .vf-back-link span {
+    display: none;
+  }
+
+  .vf-back-link {
+    padding: 12px;
+  }
+
+  .vf-interest-btn {
+    padding: 14px 16px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .vf-back-link,
+  .vf-interest-btn,
+  .vf-submit-btn,
+  .vf-btn-secondary,
+  .vf-btn-primary {
+    transition: none;
+  }
+
+  .vf-back-link:hover,
+  .vf-submit-btn:hover,
+  .vf-interest-btn:hover {
+    transform: none;
+  }
+
+  .vf-spinner {
+    animation: none;
+  }
+}
