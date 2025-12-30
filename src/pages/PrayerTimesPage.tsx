@@ -320,7 +320,7 @@ const PrayerTimesPage: React.FC = () => {
             <div className="map-wrapper">
               <iframe
                 title="Al Rahma Islamic Center Location"
-                src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&q=Al+Rahma+Islamic+Center,2916+E+McDowell+Rd,Phoenix,AZ&zoom=14`}
+                src="https://maps.google.com/maps?q=2916+E+McDowell+Rd+unit+15,+Phoenix,+AZ+85008&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="350"
                 style={{ border: 0, borderRadius: '16px' }}
