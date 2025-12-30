@@ -1,16 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { staggerContainer, fadeUp } from './animations';
+import { staggerContainer, fadeUp, SuccessButton } from './animations';
 
 export function NewsletterSection() {
   const ref = React.useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const [email, setEmail] = useState('');
+
+  const handleSubscribe = async () => {
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    // TODO: Integrate with actual newsletter service
+    setEmail('');
+  };
 
   return (
     <section className="newsletter-section" ref={ref}>
       <div className="newsletter-bg-shape"></div>
       <div className="container">
-        <motion.div 
+        <motion.div
           className="newsletter-content"
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
@@ -22,26 +30,29 @@ export function NewsletterSection() {
           <motion.p className="newsletter-subtitle" variants={fadeUp}>
             Receive prayer times, event updates, and community news directly to your inbox.
           </motion.p>
-          <motion.form 
-            className="newsletter-form" 
-            onSubmit={(e) => e.preventDefault()}
+          <motion.div
+            className="newsletter-form"
             variants={fadeUp}
           >
-            <input 
-              type="email" 
-              className="input" 
+            <input
+              type="email"
+              className="input"
               placeholder="Enter your email address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              aria-label="Email address"
             />
-            <motion.button 
-              type="submit" 
+            <SuccessButton
               className="btn btn-accent"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ duration: 0.3 }}
+              onClick={handleSubscribe}
+              successText="Subscribed!"
+              loadingText="Subscribing..."
+              disabled={!email}
+              ariaLabel="Subscribe to newsletter"
             >
               Subscribe
-            </motion.button>
-          </motion.form>
+            </SuccessButton>
+          </motion.div>
         </motion.div>
       </div>
     </section>

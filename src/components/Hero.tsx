@@ -1,27 +1,37 @@
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { PrayerTimesBar } from './PrayerTimesBar';
+import { JumuahBanner, MagneticButton } from './animations';
 
 // Custom easing
 const easeOutExpo: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 export function HeroSection() {
   const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 500], [0, 150]);
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  // Enhanced parallax with smoother, subtler motion
+  const bgY = useTransform(scrollY, [0, 800], [0, 120]);
+  const bgScale = useTransform(scrollY, [0, 800], [1, 1.1]);
+  const contentOpacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const contentY = useTransform(scrollY, [0, 300], [0, 50]);
 
   return (
     <section className="hero">
-      <motion.div className="hero-bg" style={{ y }}>
-        <img 
-          src="/hero.png" 
+      {/* Jumu'ah Friday Banner */}
+      <JumuahBanner khutbahTime="12:30" />
+
+      <motion.div
+        className="hero-bg"
+        style={{ y: bgY, scale: bgScale }}
+      >
+        <img
+          src="/hero.png"
           alt="Masjid Al-Rahma Islamic Center of Phoenix"
         />
         <div className="hero-overlay"></div>
       </motion.div>
 
-      <motion.div className="hero-content" style={{ opacity }}>
-        <motion.span 
+      <motion.div className="hero-content" style={{ opacity: contentOpacity, y: contentY }}>
+        <motion.span
           className="accent-line"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -29,8 +39,8 @@ export function HeroSection() {
         >
           Islamic Center of Phoenix
         </motion.span>
-        
-        <motion.h1 
+
+        <motion.h1
           className="hero-title"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -38,8 +48,8 @@ export function HeroSection() {
         >
           Welcome to Al-Rahma
         </motion.h1>
-        
-        <motion.p 
+
+        <motion.p
           className="hero-subtitle"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -47,32 +57,36 @@ export function HeroSection() {
         >
           A sanctuary for reflection, connection, and spiritual growth.
         </motion.p>
-        
-        <motion.div 
+
+        <motion.div
           className="hero-buttons"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 1.1, ease: easeOutExpo }}
         >
-          <motion.button 
-            className="btn btn-primary"
-            whileHover={{ scale: 1.03, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            transition={{ duration: 0.3 }}
-          >
-            Visit Us
-            <i className="fas fa-arrow-right"></i>
-          </motion.button>
-          <motion.a 
-            href="tel:+16025748750"
-            className="btn btn-secondary"
-            whileHover={{ scale: 1.03, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            transition={{ duration: 0.3 }}
-          >
-            <i className="fas fa-phone"></i>
-            (602) 574-8750
-          </motion.a>
+          <MagneticButton className="magnetic-wrapper" strength={0.2} radius={80}>
+            <motion.button
+              className="btn btn-primary"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.15 }}
+            >
+              Visit Us
+              <i className="fas fa-arrow-right"></i>
+            </motion.button>
+          </MagneticButton>
+          <MagneticButton className="magnetic-wrapper" strength={0.2} radius={80}>
+            <motion.a
+              href="tel:+16025748750"
+              className="btn btn-secondary"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.15 }}
+            >
+              <i className="fas fa-phone"></i>
+              (602) 574-8750
+            </motion.a>
+          </MagneticButton>
         </motion.div>
       </motion.div>
 
