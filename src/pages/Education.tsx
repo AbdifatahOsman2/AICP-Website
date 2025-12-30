@@ -266,10 +266,10 @@ const Education: React.FC = () => {
                   </div>
                 </div>
               </div>
-              <a href="#contact" className="edu-enroll-btn">
+              <Link to="/register" className="edu-enroll-btn">
                 <i className="fas fa-user-plus"></i>
                 Enroll Your Child
-              </a>
+              </Link>
             </motion.div>
             <motion.div 
               className="edu-schedule-image"
@@ -299,20 +299,20 @@ const Education: React.FC = () => {
                 View lesson history, receive teacher feedback, and never miss an important update.
               </p>
               <div className="edu-app-buttons">
-                <a href="#" className="edu-app-btn ios">
+                <button type="button" className="edu-app-btn ios" aria-label="Download on the App Store - Coming Soon">
                   <i className="fab fa-apple"></i>
                   <div>
                     <span>Download on the</span>
                     <strong>App Store</strong>
                   </div>
-                </a>
-                <a href="#" className="edu-app-btn android">
+                </button>
+                <button type="button" className="edu-app-btn android" aria-label="Get it on Google Play - Coming Soon">
                   <i className="fab fa-google-play"></i>
                   <div>
                     <span>Get it on</span>
                     <strong>Google Play</strong>
                   </div>
-                </a>
+                </button>
               </div>
             </motion.div>
             <motion.div 
@@ -355,7 +355,7 @@ const Education: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <a href="#contact" className="edu-cta-btn-primary">Register Now</a>
+            <Link to="/register" className="edu-cta-btn-primary">Register Now</Link>
             <a href="tel:+16025748750" className="edu-cta-btn-outline">
               <i className="fas fa-phone"></i>
               Call Us
