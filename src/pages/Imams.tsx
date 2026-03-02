@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { SEO } from '../components/SEO';
+import { StructuredData } from '../components/StructuredData';
 import '../Imams.css';
 
 interface Imam {
@@ -15,7 +17,7 @@ const imams: Imam[] = [
   {
     name: 'Sheikh Nageya',
     title: 'Senior Imam',
-    image: '/nga.png',
+    image: '/nga.webp',
     description: 'Sheikh Nageya serves as the Senior Imam at Al Rahma Islamic Center, bringing decades of experience in Islamic scholarship and community leadership. His deep knowledge of the Quran and Sunnah, combined with his compassionate approach to guidance, has made him a beloved figure in our community.',
     highlights: [
       'Over 25 years of experience in Islamic scholarship',
@@ -27,7 +29,7 @@ const imams: Imam[] = [
   {
     name: 'Sheikh Abdimalik',
     title: 'Imam',
-    image: '/malik.png',
+    image: '/malik.webp',
     description: 'Sheikh Abdimalik is dedicated to serving the Al Rahma community through education, spiritual guidance, and community outreach. His engaging teaching style and commitment to youth development have strengthened the bonds within our congregation.',
     highlights: [
       'Leads daily prayers and Taraweeh during Ramadan',
@@ -63,6 +65,18 @@ const Imams: React.FC = () => {
 
   return (
     <div className="imams-page">
+      <SEO
+        title="Our Imams & Scholars"
+        description="Meet the spiritual leaders of Al Rahma Islamic Center Phoenix. Sheikh Nageya (Senior Imam) and Sheikh Abdimalik bring decades of Islamic scholarship, Quran expertise, and community guidance."
+        canonical="/imams"
+        keywords="imam phoenix az, islamic scholar phoenix, sheikh nageya, sheikh abdimalik, muslim leaders phoenix, spiritual guidance phoenix"
+      />
+      <StructuredData
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Our Imams', url: '/imams' },
+        ]}
+      />
       {/* Back Navigation */}
       <motion.header
         className="imams-header"

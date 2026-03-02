@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { SEO } from '../components/SEO';
+import { StructuredData } from '../components/StructuredData';
 import '../CommunityAid.css';
 
 interface Opportunity {
@@ -81,6 +83,18 @@ const CommunityAid: React.FC = () => {
 
   return (
     <div className="community-aid-page">
+      <SEO
+        title="Community Aid & Volunteer Opportunities"
+        description="Get involved with Al Rahma Islamic Center Phoenix. Volunteer for masjid maintenance, events, youth programs, food distribution, and more. Join 50+ active volunteers serving 500+ families."
+        canonical="/community-aid"
+        keywords="volunteer mosque phoenix, islamic community service, muslim volunteer phoenix az, masjid volunteer opportunities, community aid phoenix"
+      />
+      <StructuredData
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Community Aid', url: '/community-aid' },
+        ]}
+      />
       {/* Back Navigation */}
       <motion.header
         className="ca-header"
@@ -97,7 +111,10 @@ const CommunityAid: React.FC = () => {
       {/* Hero Section with Image */}
       <section className="ca-hero" ref={heroRef}>
         <div className="ca-hero-image">
-          <img src="/inside.jpg" alt="Inside Al Rahma Islamic Center" loading="lazy" decoding="async" />
+          <picture>
+            <source srcSet="/inside.webp" type="image/webp" />
+            <img src="/inside.jpg" alt="Inside Al Rahma Islamic Center" loading="lazy" decoding="async" />
+          </picture>
           <div className="ca-hero-overlay"></div>
         </div>
         <motion.div
@@ -155,7 +172,10 @@ const CommunityAid: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <img src="/Outside cleaning.png" alt="Community volunteers cleaning outside the masjid" loading="lazy" decoding="async" />
+              <picture>
+                <source srcSet="/Outside cleaning.webp" type="image/webp" />
+                <img src="/Outside cleaning.png" alt="Community volunteers cleaning outside the masjid" loading="lazy" decoding="async" />
+              </picture>
             </motion.div>
             <motion.div
               className="ca-featured-content"

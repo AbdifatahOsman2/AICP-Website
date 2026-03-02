@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { SEO } from '../components/SEO';
+import { StructuredData } from '../components/StructuredData';
 import '../VolunteerForm.css';
 
 interface FormData {
@@ -113,6 +115,19 @@ const VolunteerForm: React.FC = () => {
 
   return (
     <div className="volunteer-form-page">
+      <SEO
+        title="Volunteer Registration"
+        description="Register as a volunteer at Al Rahma Islamic Center Phoenix. Choose from masjid maintenance, event support, youth programs, food distribution, and more."
+        canonical="/volunteer"
+        keywords="volunteer registration mosque, islamic volunteer phoenix, community service mosque phoenix"
+      />
+      <StructuredData
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Community Aid', url: '/community-aid' },
+          { name: 'Volunteer', url: '/volunteer' },
+        ]}
+      />
       {/* Back Navigation */}
       <motion.header
         className="vf-header"

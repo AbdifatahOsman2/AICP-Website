@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { motion, Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { SEO } from '../components/SEO';
+import { StructuredData } from '../components/StructuredData';
 import '../Donation.css';
 
 type DonationType = 'one-time' | 'monthly';
@@ -125,6 +127,18 @@ const Donation: React.FC = () => {
 
   return (
     <div className="donation-page">
+      <SEO
+        title="Donate to Al Rahma Islamic Center"
+        description="Support Al Rahma Islamic Center of Phoenix with your Zakat, Sadaqah, or general donation. Your tax-deductible contribution helps maintain our mosque, fund education programs, and serve our community."
+        canonical="/donate"
+        keywords="donate to mosque phoenix, zakat phoenix az, sadaqah donation, islamic charity phoenix, support masjid phoenix, tax deductible mosque donation"
+      />
+      <StructuredData
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Donate', url: '/donate' },
+        ]}
+      />
       {/* Back Navigation */}
       <motion.header
         className="donate-header"

@@ -8,21 +8,21 @@ const updates = [
     date: 'Every Night',
     title: 'The Blessed Hour of the Night',
     description: 'There is an hour of the night which, no Muslim person encounters it and asks for a good thing, but Allah grants it.',
-    image: '/TheBlessedHourOfTheNight.jpg',
+    image: '/TheBlessedHourOfTheNight.webp',
   },
   {
     category: 'Community',
     date: 'Ongoing',
     title: 'Helping Those in Need',
     description: 'If Allah blessed us with money, good health or knowledge, we should share with those who are less fortunate.',
-    image: '/HelpThoseInNeed.jpg',
+    image: '/HelpThoseInNeed.webp',
   },
   {
     category: 'Daily Prayers',
     date: '5 Times Daily',
     title: 'Join Us for Salah',
     description: 'Come pray with us at Al-Rahma. Our doors are open for all five daily prayers.',
-    image: '/JoinUsForSalah.jpg',
+    image: '/JoinUsForSalah.webp',
   },
 ];
 
@@ -33,7 +33,7 @@ export function UpdatesSection() {
   return (
     <section className="section-gallery" id="community" ref={ref}>
       <div className="container">
-        <motion.div 
+        <motion.div
           className="section-header"
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
@@ -49,21 +49,21 @@ export function UpdatesSection() {
           </motion.a>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="updates-grid"
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
           variants={staggerContainer}
         >
           {updates.map((update, index) => (
-            <motion.article 
-              key={index} 
+            <motion.article
+              key={index}
               className="update-card"
               variants={fadeUp}
               whileHover={{ y: -12 }}
               transition={{ duration: 0.5 }}
             >
-              <motion.div 
+              <motion.div
                 className="update-card-image"
                 whileHover={{ scale: 1.03 }}
                 transition={{ duration: 0.6 }}

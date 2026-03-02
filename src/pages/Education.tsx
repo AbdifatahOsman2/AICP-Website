@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion, Variants, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { SEO } from '../components/SEO';
+import { StructuredData } from '../components/StructuredData';
 import '../Education.css';
 
 const Education: React.FC = () => {
@@ -11,8 +13,8 @@ const Education: React.FC = () => {
 
   const fadeUp: Variants = {
     hidden: { opacity: 0, y: 40 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }
     }
@@ -28,8 +30,8 @@ const Education: React.FC = () => {
 
   const scaleIn: Variants = {
     hidden: { opacity: 0, scale: 0.95 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       scale: 1,
       transition: { duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }
     }
@@ -82,8 +84,20 @@ const Education: React.FC = () => {
 
   return (
     <div className="education-page">
+      <SEO
+        title="Islamic Education & Arabic Classes"
+        description="Enroll in AICP's Madrasah programs: Quran memorization (Hifz), Arabic language classes, Islamic studies, and weekend school for all ages. Certified teachers, small class sizes, and flexible schedules in Phoenix, AZ."
+        canonical="/education"
+        keywords="islamic school phoenix, arabic classes phoenix az, quran memorization phoenix, hifz program arizona, islamic studies phoenix, weekend islamic school, madrasah phoenix"
+      />
+      <StructuredData
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Education', url: '/education' },
+        ]}
+      />
       {/* Navigation Header - Same as AboutPage */}
-      <motion.header 
+      <motion.header
         className="about-header"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -105,7 +119,7 @@ const Education: React.FC = () => {
 
       {/* Hero Section */}
       <section className="about-hero" ref={heroRef}>
-        <motion.div 
+        <motion.div
           className="about-hero-content"
           initial="hidden"
           animate={heroInView ? 'visible' : 'hidden'}
@@ -121,13 +135,16 @@ const Education: React.FC = () => {
         </motion.div>
 
         {/* Featured Image */}
-        <motion.div 
+        <motion.div
           className="about-featured-image"
           variants={scaleIn}
           initial="hidden"
           animate={heroInView ? 'visible' : 'hidden'}
         >
-          <img src="/class2.png" alt="Students learning at AICP" loading="lazy" decoding="async" />
+          <picture>
+            <source srcSet="/class2.webp" type="image/webp" />
+            <img src="/class2.png" alt="Students learning at AICP" loading="lazy" decoding="async" />
+          </picture>
           <div className="about-image-overlay"></div>
           <div className="about-image-caption">
             <span className="about-image-title">Weekend Madrasah</span>
@@ -139,7 +156,7 @@ const Education: React.FC = () => {
       {/* Programs Section */}
       <section className="edu-programs" ref={programsRef}>
         <div className="container">
-          <motion.div 
+          <motion.div
             className="edu-programs-header"
             initial="hidden"
             animate={programsInView ? 'visible' : 'hidden'}
@@ -156,14 +173,14 @@ const Education: React.FC = () => {
             </motion.p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="edu-programs-grid"
             initial="hidden"
             animate={programsInView ? 'visible' : 'hidden'}
             variants={staggerContainer}
           >
             {programs.map((program, index) => (
-              <motion.div 
+              <motion.div
                 key={index}
                 className="edu-program-card"
                 variants={fadeUp}
@@ -185,7 +202,7 @@ const Education: React.FC = () => {
       {/* Why Choose Us Section */}
       <section className="edu-features">
         <div className="container">
-          <motion.div 
+          <motion.div
             className="edu-features-header"
             initial="hidden"
             whileInView="visible"
@@ -202,7 +219,7 @@ const Education: React.FC = () => {
               Our commitment to quality teaching and nurturing environments sets us apart.
             </motion.p>
           </motion.div>
-          <motion.div 
+          <motion.div
             className="edu-features-grid"
             initial="hidden"
             whileInView="visible"
@@ -210,7 +227,7 @@ const Education: React.FC = () => {
             variants={staggerContainer}
           >
             {classFeatures.map((feature, index) => (
-              <motion.div 
+              <motion.div
                 key={index}
                 className="edu-feature-card"
                 variants={fadeUp}
@@ -229,7 +246,7 @@ const Education: React.FC = () => {
       {/* Schedule Section */}
       <section className="edu-schedule">
         <div className="container">
-          <motion.div 
+          <motion.div
             className="edu-schedule-grid"
             initial="hidden"
             whileInView="visible"
@@ -240,7 +257,7 @@ const Education: React.FC = () => {
               <span className="edu-section-label accent">CLASS SCHEDULE</span>
               <h2 className="edu-section-title">Flexible Learning Options</h2>
               <p className="edu-schedule-description">
-                We offer classes throughout the week to accommodate busy family schedules. 
+                We offer classes throughout the week to accommodate busy family schedules.
                 Our programs run during evenings and weekends to ensure every child can participate.
               </p>
               <div className="edu-schedule-times">
@@ -271,11 +288,14 @@ const Education: React.FC = () => {
                 Enroll Your Child
               </Link>
             </motion.div>
-            <motion.div 
+            <motion.div
               className="edu-schedule-image"
               variants={scaleIn}
             >
-              <img src="/class1.png" alt="AICP Learning Environment" loading="lazy" decoding="async" />
+              <picture>
+                <source srcSet="/class1.webp" type="image/webp" />
+                <img src="/class1.png" alt="AICP Learning Environment" loading="lazy" decoding="async" />
+              </picture>
             </motion.div>
           </motion.div>
         </div>
@@ -284,7 +304,7 @@ const Education: React.FC = () => {
       {/* App Section - Compact */}
       <section className="edu-app-section">
         <div className="container">
-          <motion.div 
+          <motion.div
             className="edu-app-container"
             initial="hidden"
             whileInView="visible"
@@ -295,7 +315,7 @@ const Education: React.FC = () => {
               <span className="edu-section-label">STAY CONNECTED</span>
               <h2 className="edu-section-title">Track Progress with Our App</h2>
               <p className="edu-app-description">
-                Download the Markaz Al Najah app to stay updated on your child's learning journey. 
+                Download the Markaz Al Najah app to stay updated on your child's learning journey.
                 View lesson history, receive teacher feedback, and never miss an important update.
               </p>
               <div className="edu-app-buttons">
@@ -315,12 +335,15 @@ const Education: React.FC = () => {
                 </button>
               </div>
             </motion.div>
-            <motion.div 
+            <motion.div
               className="edu-app-mockup"
               variants={scaleIn}
             >
               <div className="edu-phone-frame">
-                <img src="/pic1 1.png" alt="Markaz Al Najah App" className="edu-phone-screenshot" loading="lazy" decoding="async" />
+                <picture>
+                  <source srcSet="/pic1 1.webp" type="image/webp" />
+                  <img src="/pic1 1.png" alt="Markaz Al Najah App" className="edu-phone-screenshot" loading="lazy" decoding="async" />
+                </picture>
               </div>
             </motion.div>
           </motion.div>
@@ -330,7 +353,7 @@ const Education: React.FC = () => {
       {/* CTA Section */}
       <section className="edu-cta">
         <div className="edu-cta-container">
-          <motion.h2 
+          <motion.h2
             className="edu-cta-title"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -339,7 +362,7 @@ const Education: React.FC = () => {
           >
             Ready to Begin Your Child's Journey?
           </motion.h2>
-          <motion.p 
+          <motion.p
             className="edu-cta-description"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -348,7 +371,7 @@ const Education: React.FC = () => {
           >
             Registration is open for all programs. Contact us today to learn more about our classes and schedule a visit.
           </motion.p>
-          <motion.div 
+          <motion.div
             className="edu-cta-buttons"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

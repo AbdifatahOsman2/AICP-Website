@@ -3,6 +3,8 @@ import { motion, Variants, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { usePrayerTimes } from '../hooks/usePrayerTimes';
 import { fetchMonthlyPrayerTimes, PrayerTimesData } from '../services/prayerTimes';
+import { SEO } from '../components/SEO';
+import { StructuredData } from '../components/StructuredData';
 import '../PrayerTimes.css';
 
 type TabType = 'daily' | 'monthly';
@@ -19,18 +21,18 @@ const IQAMAH_OFFSETS: Record<string, number> = {
 const PrayerTimesPage: React.FC = () => {
   const heroRef = React.useRef(null);
   const heroInView = useInView(heroRef, { once: true, margin: '-50px' });
-  
+
   const [activeTab, setActiveTab] = useState<TabType>('daily');
   const [countdown, setCountdown] = useState({ hours: 0, minutes: 0, seconds: 0 });
   const [monthlyData, setMonthlyData] = useState<PrayerTimesData[]>([]);
   const [isLoadingMonthly, setIsLoadingMonthly] = useState(false);
-  
+
   const { prayerTimes, isLoading, error } = usePrayerTimes();
 
   const fadeUp: Variants = {
     hidden: { opacity: 0, y: 40 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }
     }
@@ -55,7 +57,7 @@ const PrayerTimesPage: React.FC = () => {
       prayerTime.setHours(hours, minutes, 0, 0);
 
       let diff = prayerTime.getTime() - now.getTime();
-      
+
       // If negative, prayer is tomorrow
       if (diff < 0) {
         diff += 24 * 60 * 60 * 1000;
@@ -94,7 +96,7 @@ const PrayerTimesPage: React.FC = () => {
     const totalMinutes = hours * 60 + minutes + offset;
     const newHours = Math.floor(totalMinutes / 60) % 24;
     const newMinutes = totalMinutes % 60;
-    
+
     const period = newHours >= 12 ? 'PM' : 'AM';
     const hours12 = newHours % 12 || 12;
     return `${hours12.toString().padStart(2, '0')}:${newMinutes.toString().padStart(2, '0')} ${period}`;
@@ -119,8 +121,20 @@ const PrayerTimesPage: React.FC = () => {
 
   return (
     <div className="prayer-times-page">
+      <SEO
+        title="Daily Prayer Times"
+        description="Accurate daily prayer times (Salah times) for Al Rahma Islamic Center in Phoenix, AZ. View Fajr, Dhuhr, Asr, Maghrib, Isha adhan and iqamah times. Updated daily with countdown to next prayer."
+        canonical="/prayer-times"
+        keywords="prayer times phoenix az, salah times phoenix, fajr time phoenix, maghrib time phoenix, isha time phoenix, masjid prayer schedule, jummah prayer times phoenix"
+      />
+      <StructuredData
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Prayer Times', url: '/prayer-times' },
+        ]}
+      />
       {/* Navigation Header - Same as AboutPage */}
-      <motion.header 
+      <motion.header
         className="about-header"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -142,7 +156,7 @@ const PrayerTimesPage: React.FC = () => {
 
       {/* Hero Section with Date */}
       <section className="prayer-hero" ref={heroRef}>
-        <motion.div 
+        <motion.div
           className="prayer-hero-content"
           initial="hidden"
           animate={heroInView ? 'visible' : 'hidden'}
@@ -162,7 +176,7 @@ const PrayerTimesPage: React.FC = () => {
       <section className="prayer-content">
         <div className="container">
           {/* Next Prayer Card */}
-          <motion.div 
+          <motion.div
             className="next-prayer-card"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -175,7 +189,7 @@ const PrayerTimesPage: React.FC = () => {
             <p className="next-prayer-time">
               Begins at {prayerTimes?.nextPrayer?.time || '--:--'}
             </p>
-            
+
             <div className="countdown-display">
               <div className="countdown-item">
                 <span className="countdown-value">
@@ -201,19 +215,19 @@ const PrayerTimesPage: React.FC = () => {
           </motion.div>
 
           {/* Schedule Tabs */}
-          <motion.div 
+          <motion.div
             className="schedule-tabs"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <button 
+            <button
               className={`schedule-tab ${activeTab === 'daily' ? 'active' : ''}`}
               onClick={() => setActiveTab('daily')}
             >
               Daily Schedule
             </button>
-            <button 
+            <button
               className={`schedule-tab ${activeTab === 'monthly' ? 'active' : ''}`}
               onClick={() => setActiveTab('monthly')}
             >
@@ -222,7 +236,7 @@ const PrayerTimesPage: React.FC = () => {
           </motion.div>
 
           {/* Prayer Times Table */}
-          <motion.div 
+          <motion.div
             className="prayer-table-container"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -253,8 +267,8 @@ const PrayerTimesPage: React.FC = () => {
                     </tr>
                   ) : (
                     prayersList.map((prayer) => (
-                      <tr 
-                        key={prayer.name} 
+                      <tr
+                        key={prayer.name}
                         className={`${prayer.isNext ? 'next-prayer-row' : ''} ${prayer.isSunrise ? 'sunrise-row' : ''}`}
                       >
                         <td className="prayer-name-cell">
@@ -311,7 +325,7 @@ const PrayerTimesPage: React.FC = () => {
           </motion.div>
 
           {/* Google Maps */}
-          <motion.div 
+          <motion.div
             className="map-container"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -335,7 +349,7 @@ const PrayerTimesPage: React.FC = () => {
                 <h4>Al Rahma Islamic Center</h4>
                 <p>2916 E McDowell Rd unit 15, Phoenix, AZ 85008</p>
               </div>
-              <a 
+              <a
                 href="https://www.google.com/maps/dir//Al+Rahma+Islamic+Center,2916+E+McDowell+Rd,Phoenix,AZ"
                 target="_blank"
                 rel="noopener noreferrer"

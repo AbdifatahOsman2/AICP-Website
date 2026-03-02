@@ -23,10 +23,13 @@ export function HeroSection() {
         className="hero-bg"
         style={{ y: bgY, scale: bgScale }}
       >
-        <img
-          src="/hero.png"
-          alt="Masjid Al-Rahma Islamic Center of Phoenix"
-        />
+        <picture>
+          <source srcSet="/hero.webp" type="image/webp" />
+          <img
+            src="/hero.png"
+            alt="Masjid Al-Rahma Islamic Center of Phoenix"
+          />
+        </picture>
         <div className="hero-overlay"></div>
       </motion.div>
 
@@ -91,7 +94,7 @@ export function HeroSection() {
       </motion.div>
 
       {/* Prayer Times Bar */}
-      <motion.div 
+      <motion.div
         className="prayer-bar-wrapper"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}

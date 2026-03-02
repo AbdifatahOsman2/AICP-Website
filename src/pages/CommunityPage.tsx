@@ -1,37 +1,39 @@
 import React from 'react';
 import { motion, Variants, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { SEO } from '../components/SEO';
+import { StructuredData } from '../components/StructuredData';
 import '../Community.css';
 
 // Gallery images - Community events and gatherings
 const galleryImages = [
   {
     id: 1,
-    images: ['/gallery/BBQ1.jpg', '/gallery/BBQ2.jpg', '/gallery/BBQ3.jpg'],
+    images: ['/gallery/BBQ1.webp', '/gallery/BBQ2.webp', '/gallery/BBQ3.webp'],
     title: 'Community BBQ',
     description: 'Annual summer gathering bringing families together',
   },
   {
     id: 2,
-    images: ['/gallery/quranGrad.jpg'],
+    images: ['/gallery/quranGrad.webp'],
     title: 'Quran Graduation',
     description: 'Celebrating our students\' achievements in Quran memorization',
   },
   {
     id: 3,
-    images: ['/gallery/BBQ4.jpg', '/gallery/BBQ5.jpg'],
+    images: ['/gallery/BBQ4.webp', '/gallery/BBQ5.webp'],
     title: 'Community Gathering',
     description: 'Sharing meals and building bonds as one family',
   },
   {
     id: 4,
-    images: ['/gallery/604913093_18212017039315123_3491130923211631296_n.jpg'],
+    images: ['/gallery/604913093_18212017039315123_3491130923211631296_n.webp'],
     title: 'Special Event',
     description: 'Memorable moments from our community programs',
   },
   {
     id: 5,
-    images: ['/gallery/BBQ6.jpg'],
+    images: ['/gallery/BBQ6.webp'],
     title: 'Outdoor Activities',
     description: 'Enjoying time together at the masjid grounds',
   },
@@ -45,8 +47,8 @@ const CommunityPage: React.FC = () => {
 
   const fadeUp: Variants = {
     hidden: { opacity: 0, y: 40 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }
     }
@@ -62,8 +64,8 @@ const CommunityPage: React.FC = () => {
 
   const scaleIn: Variants = {
     hidden: { opacity: 0, scale: 0.95 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       scale: 1,
       transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }
     }
@@ -71,8 +73,20 @@ const CommunityPage: React.FC = () => {
 
   return (
     <div className="community-page">
+      <SEO
+        title="Community Events & Programs"
+        description="Explore community events, gatherings, and programs at Al Rahma Islamic Center Phoenix. View our gallery of BBQs, Quran graduations, and community celebrations."
+        canonical="/community"
+        keywords="islamic community events phoenix, masjid events phoenix az, muslim gatherings phoenix, community bbq mosque, quran graduation phoenix"
+      />
+      <StructuredData
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Community', url: '/community' },
+        ]}
+      />
       {/* Navigation Header - Same as AboutPage */}
-      <motion.header 
+      <motion.header
         className="about-header"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -94,7 +108,7 @@ const CommunityPage: React.FC = () => {
 
       {/* Hero Section */}
       <section className="community-hero" ref={heroRef}>
-        <motion.div 
+        <motion.div
           className="community-hero-content"
           initial="hidden"
           animate={heroInView ? 'visible' : 'hidden'}
@@ -107,7 +121,7 @@ const CommunityPage: React.FC = () => {
             Moments from our Community
           </motion.h1>
           <motion.p className="community-subtitle" variants={fadeUp}>
-            Explore the vibrant daily life, special events, and learning atmosphere at 
+            Explore the vibrant daily life, special events, and learning atmosphere at
             Al Rahma Islamic Center.
           </motion.p>
         </motion.div>
@@ -116,14 +130,14 @@ const CommunityPage: React.FC = () => {
       {/* Gallery Grid Section */}
       <section className="gallery-section" ref={galleryRef}>
         <div className="container">
-          <motion.div 
+          <motion.div
             className="gallery-grid"
             initial="hidden"
             animate={galleryInView ? 'visible' : 'hidden'}
             variants={staggerContainer}
           >
             {galleryImages.map((image, index) => (
-              <motion.div 
+              <motion.div
                 key={image.id}
                 className={`gallery-item gallery-item-${index + 1} ${image.images.length > 1 ? 'has-multiple' : ''}`}
                 variants={scaleIn}
@@ -158,15 +172,15 @@ const CommunityPage: React.FC = () => {
             ))}
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="gallery-cta"
             initial={{ opacity: 0, y: 30 }}
             animate={galleryInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            <a 
-              href="https://www.instagram.com/masjidalrahma/" 
-              target="_blank" 
+            <a
+              href="https://www.instagram.com/masjidalrahma/"
+              target="_blank"
               rel="noopener noreferrer"
               className="gallery-btn"
             >
@@ -180,7 +194,7 @@ const CommunityPage: React.FC = () => {
       {/* Upcoming Events Section */}
       <section className="community-events">
         <div className="container">
-          <motion.div 
+          <motion.div
             className="events-header"
             initial="hidden"
             whileInView="visible"
@@ -198,16 +212,16 @@ const CommunityPage: React.FC = () => {
             </motion.p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="social-links"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
           >
-            <motion.a 
-              href="https://www.facebook.com/AlRahmaAZ/" 
-              target="_blank" 
+            <motion.a
+              href="https://www.facebook.com/AlRahmaAZ/"
+              target="_blank"
               rel="noopener noreferrer"
               className="social-card"
               variants={fadeUp}
@@ -221,9 +235,9 @@ const CommunityPage: React.FC = () => {
               <p>Follow for updates and announcements</p>
             </motion.a>
 
-            <motion.a 
-              href="https://www.instagram.com/masjidalrahma/" 
-              target="_blank" 
+            <motion.a
+              href="https://www.instagram.com/masjidalrahma/"
+              target="_blank"
               rel="noopener noreferrer"
               className="social-card"
               variants={fadeUp}
@@ -237,9 +251,9 @@ const CommunityPage: React.FC = () => {
               <p>Photos and stories from our community</p>
             </motion.a>
 
-            <motion.a 
-              href="https://www.youtube.com/channel/UCZhSVWVHK0vfxZOOKWA_-ZQ" 
-              target="_blank" 
+            <motion.a
+              href="https://www.youtube.com/channel/UCZhSVWVHK0vfxZOOKWA_-ZQ"
+              target="_blank"
               rel="noopener noreferrer"
               className="social-card"
               variants={fadeUp}

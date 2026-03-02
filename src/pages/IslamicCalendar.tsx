@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { motion, Variants, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { SEO } from '../components/SEO';
+import { StructuredData } from '../components/StructuredData';
 import '../IslamicCalendar.css';
 
 interface RamadanDay {
@@ -129,6 +131,18 @@ const IslamicCalendar: React.FC = () => {
 
   return (
     <div className="islamic-calendar-page">
+      <SEO
+        title="Islamic Calendar & Hijri Dates"
+        description="View the Islamic (Hijri) calendar, Ramadan schedule with suhoor and iftar times, Eid prayer times, and important Islamic dates at Al Rahma Islamic Center Phoenix."
+        canonical="/islamic-calendar"
+        keywords="islamic calendar phoenix, hijri calendar, ramadan schedule phoenix az, eid prayer times phoenix, suhoor iftar times phoenix, taraweeh prayers phoenix"
+      />
+      <StructuredData
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Islamic Calendar', url: '/islamic-calendar' },
+        ]}
+      />
       {/* Back Navigation */}
       <motion.header
         className="ic-header"

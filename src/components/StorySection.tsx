@@ -13,7 +13,7 @@ export function StorySection() {
     <section className="section-gallery feature-section feature-section-dark" id="about" ref={ref}>
       <div className="container">
         <div className="feature-grid reverse">
-          <motion.div 
+          <motion.div
             className="feature-content"
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
@@ -24,16 +24,16 @@ export function StorySection() {
               From Humble Beginnings to a Thriving Community
             </motion.h2>
             <motion.p className="feature-description" variants={fadeUp}>
-              Al Rahma Islamic Center of Phoenix began as a small gathering of faithful 
-              Muslims who came together with a shared dream. What started as prayers in 
-              living rooms grew into a determined community. Through collective effort, 
-              sacrifice, and the mercy of Allah, our community pooled their resources 
-              to purchase this building and transform it into the beautiful masjid it 
-              is today. Every brick laid and every room built represents the unity and 
+              Al Rahma Islamic Center of Phoenix began as a small gathering of faithful
+              Muslims who came together with a shared dream. What started as prayers in
+              living rooms grew into a determined community. Through collective effort,
+              sacrifice, and the mercy of Allah, our community pooled their resources
+              to purchase this building and transform it into the beautiful masjid it
+              is today. Every brick laid and every room built represents the unity and
               dedication of our brothers and sisters.
             </motion.p>
             <motion.div variants={fadeUp}>
-              <motion.button 
+              <motion.button
                 className="btn btn-accent"
                 whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.98 }}
@@ -46,20 +46,23 @@ export function StorySection() {
           </motion.div>
 
           {/* Desktop/Tablet Image - Plans */}
-          <motion.div 
+          <motion.div
             className="feature-image feature-image-plans hide-mobile"
             initial={{ opacity: 0, x: 60 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 1.2, ease: easeOutExpo }}
             whileHover={{ scale: 1.02 }}
           >
-            <img
-              src="/plans.png"
-              alt="Al Rahma Islamic Center architectural plans"
-              loading="lazy"
-              decoding="async"
-            />
-            <motion.span 
+            <picture>
+              <source srcSet="/plans.webp" type="image/webp" />
+              <img
+                src="/plans.png"
+                alt="Al Rahma Islamic Center architectural plans"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+            <motion.span
               className="badge badge-primary feature-badge right"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -70,20 +73,23 @@ export function StorySection() {
           </motion.div>
 
           {/* Mobile Image - Side view of masjid */}
-          <motion.div 
+          <motion.div
             className="feature-image show-mobile-only"
             initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 1.2, ease: easeOutExpo }}
           >
-            <img
-              src="/side.png"
-              alt="Al Rahma Islamic Center side view"
-              loading="lazy"
-              decoding="async"
-            />
+            <picture>
+              <source srcSet="/side.webp" type="image/webp" />
+              <img
+                src="/side.png"
+                alt="Al Rahma Islamic Center side view"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
             <div className="feature-image-overlay"></div>
-            <motion.span 
+            <motion.span
               className="badge badge-primary feature-badge"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}

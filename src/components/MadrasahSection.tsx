@@ -13,21 +13,24 @@ export function MadrasahSection() {
     <section className="section-gallery feature-section" id="education" ref={ref}>
       <div className="container">
         <div className="feature-grid">
-          <motion.div 
+          <motion.div
             className="feature-image"
             initial={{ opacity: 0, x: -60 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 1.2, ease: easeOutExpo }}
             whileHover={{ scale: 1.02 }}
           >
-            <img
-              src="/education.png"
-              alt="Arabic and Islamic education at Al-Rahma"
-              loading="lazy"
-              decoding="async"
-            />
+            <picture>
+              <source srcSet="/education.webp" type="image/webp" />
+              <img
+                src="/education.png"
+                alt="Arabic and Islamic education at Al-Rahma"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
             <div className="feature-image-overlay"></div>
-            <motion.span 
+            <motion.span
               className="badge badge-primary feature-badge"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -37,7 +40,7 @@ export function MadrasahSection() {
             </motion.span>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="feature-content"
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
@@ -48,12 +51,12 @@ export function MadrasahSection() {
               Nurturing Young Hearts and Minds
             </motion.h2>
             <motion.p className="feature-description" variants={fadeUp}>
-              Our Islamic education programs provide a vibrant and engaging learning 
-              environment where children gain essential Islamic knowledge, memorize 
+              Our Islamic education programs provide a vibrant and engaging learning
+              environment where children gain essential Islamic knowledge, memorize
               the Quran, and develop strong moral character rooted in faith.
             </motion.p>
             <motion.div className="feature-buttons" variants={fadeUp}>
-              <motion.button 
+              <motion.button
                 className="btn btn-primary"
                 whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.98 }}
@@ -62,7 +65,7 @@ export function MadrasahSection() {
                 Learn More
                 <i className="fas fa-arrow-right"></i>
               </motion.button>
-              <motion.button 
+              <motion.button
                 className="btn btn-secondary-dark"
                 whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.98 }}

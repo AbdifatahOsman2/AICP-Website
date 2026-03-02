@@ -2,6 +2,8 @@ import React from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { staggerContainer, fadeUp, scaleIn } from '../components/animations';
+import { SEO } from '../components/SEO';
+import { StructuredData } from '../components/StructuredData';
 
 const features = [
   {
@@ -29,8 +31,20 @@ export function AboutPage() {
 
   return (
     <div className="about-page">
+      <SEO
+        title="About Al Rahma Islamic Center"
+        description="Learn about Al Rahma Islamic Center of Phoenix (AICP), a sanctuary of peace and reflection established in 1998. Discover our mission, architectural harmony, community programs, and Islamic education services in Phoenix, AZ."
+        canonical="/about"
+        keywords="about al rahma, islamic center phoenix history, masjid phoenix az, muslim community phoenix, islamic center arizona"
+      />
+      <StructuredData
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'About', url: '/about' },
+        ]}
+      />
       {/* Navigation Header */}
-      <motion.header 
+      <motion.header
         className="about-header"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -52,19 +66,19 @@ export function AboutPage() {
 
       {/* Hero Section */}
       <section className="about-hero" ref={heroRef}>
-        <motion.div 
+        <motion.div
           className="about-hero-content"
           initial="hidden"
           animate={heroInView ? 'visible' : 'hidden'}
           variants={staggerContainer}
         >
-          <motion.span 
+          <motion.span
             className="about-established"
             variants={fadeUp}
           >
             Established 1998
           </motion.span>
-          <motion.h1 
+          <motion.h1
             className="about-title"
             variants={fadeUp}
           >
@@ -74,13 +88,16 @@ export function AboutPage() {
         </motion.div>
 
         {/* Featured Image */}
-        <motion.div 
+        <motion.div
           className="about-featured-image"
           variants={scaleIn}
           initial="hidden"
           animate={heroInView ? 'visible' : 'hidden'}
         >
-          <img src="/side.png" alt="Al-Rahma Islamic Center Campus" loading="lazy" decoding="async" />
+          <picture>
+            <source srcSet="/side.webp" type="image/webp" />
+            <img src="/side.png" alt="Al-Rahma Islamic Center Campus" loading="lazy" decoding="async" />
+          </picture>
           <div className="about-image-overlay"></div>
           <div className="about-image-caption">
             <span className="about-image-title">The Campus</span>
@@ -92,7 +109,7 @@ export function AboutPage() {
       {/* Content Section */}
       <section className="about-content-section" ref={contentRef}>
         <div className="container">
-          <motion.div 
+          <motion.div
             className="about-grid"
             initial="hidden"
             animate={contentInView ? 'visible' : 'hidden'}
@@ -105,20 +122,20 @@ export function AboutPage() {
               </h2>
               <div className="about-story-text">
                 <p>
-                  Masjid Al-Rahma is more than a place of worship; it is a spiritual 
-                  home designed to nurture the soul and intellect. Founded over 
-                  two decades ago, our vision has always been to create a space 
+                  Masjid Al-Rahma is more than a place of worship; it is a spiritual
+                  home designed to nurture the soul and intellect. Founded over
+                  two decades ago, our vision has always been to create a space
                   that breathes tranquility.
                 </p>
                 <p>
-                  Inspired by the geometric harmony of traditional Islamic 
-                  architecture yet rooted in the contemporary landscape of our 
-                  city, the Masjid stands as a testament to the enduring relevance 
+                  Inspired by the geometric harmony of traditional Islamic
+                  architecture yet rooted in the contemporary landscape of our
+                  city, the Masjid stands as a testament to the enduring relevance
                   of faith.
                 </p>
               </div>
-              <motion.a 
-                href="#" 
+              <motion.a
+                href="#"
                 className="about-history-link"
                 whileHover={{ x: 8 }}
                 transition={{ duration: 0.3 }}
@@ -128,12 +145,12 @@ export function AboutPage() {
             </motion.div>
 
             {/* Right Column - Features */}
-            <motion.div 
+            <motion.div
               className="about-features"
               variants={staggerContainer}
             >
               {features.map((feature, index) => (
-                <motion.div 
+                <motion.div
                   key={index}
                   className="about-feature-card"
                   variants={fadeUp}

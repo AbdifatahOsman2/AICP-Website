@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { motion, Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { SEO } from '../components/SEO';
+import { StructuredData } from '../components/StructuredData';
 import '../Registration.css';
 
 interface FormData {
@@ -182,6 +184,19 @@ const Registration: React.FC = () => {
 
   return (
     <div className="registration-page">
+      <SEO
+        title="Register for Islamic Education Programs"
+        description="Enroll your child in Al Rahma Islamic Center's Madrasah programs. Register for Quran memorization, Arabic language, Islamic studies, and weekend school in Phoenix, AZ."
+        canonical="/register"
+        keywords="register islamic school phoenix, enroll madrasah phoenix az, quran class registration, arabic class enrollment phoenix"
+      />
+      <StructuredData
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Education', url: '/education' },
+          { name: 'Registration', url: '/register' },
+        ]}
+      />
       {/* Navigation Header */}
       <motion.header
         className="about-header"

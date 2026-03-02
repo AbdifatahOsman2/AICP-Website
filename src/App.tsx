@@ -10,7 +10,9 @@ import {
   UpdatesSection,
   ConnectSection,
   NewsletterSection,
-  Footer
+  Footer,
+  SEO,
+  StructuredData
 } from './components';
 import './App.css';
 
@@ -47,10 +49,19 @@ function HomePage() {
 
   return (
     <div className="app">
-      <Header 
-        isScrolled={isScrolled} 
-        mobileMenuOpen={mobileMenuOpen} 
-        setMobileMenuOpen={setMobileMenuOpen} 
+      <SEO
+        title={undefined}
+        description="Al Rahma Islamic Center of Phoenix (AICP) — Your local masjid offering daily prayers, Jumu'ah, Islamic education, Arabic classes, Quran studies, and community programs. Located at 2916 E McDowell Rd, Phoenix, AZ 85008."
+        canonical="/"
+        keywords="islamic center phoenix, masjid phoenix az, mosque near me phoenix, prayer times phoenix, jummah prayer phoenix, islamic school phoenix, arabic classes phoenix, al rahma phoenix, muslim community phoenix"
+      />
+      <StructuredData
+        breadcrumbs={[{ name: 'Home', url: '/' }]}
+      />
+      <Header
+        isScrolled={isScrolled}
+        mobileMenuOpen={mobileMenuOpen}
+        setMobileMenuOpen={setMobileMenuOpen}
       />
       <HeroSection />
       <QuoteSection />

@@ -1,3 +1,9 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
+
+# Sitemap
+Sitemap: https://masjidal-rahma.com/sitemap.xml
+
+# Disallow internal/admin paths
+Disallow: /static/
