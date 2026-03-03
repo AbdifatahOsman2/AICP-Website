@@ -26,7 +26,7 @@ export function HeroSection() {
         <picture>
           <source srcSet="/hero.webp" type="image/webp" />
           <img
-            src="/hero.png"
+            src="/hero.webp"
             alt="Masjid Al-Rahma Islamic Center of Phoenix"
           />
         </picture>

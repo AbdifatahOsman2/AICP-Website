@@ -25,18 +25,6 @@ const imams: Imam[] = [
       'Provides spiritual guidance and counseling',
       'Oversees religious education programs'
     ]
-  },
-  {
-    name: 'Sheikh Abdimalik',
-    title: 'Imam',
-    image: '/malik.webp',
-    description: 'Sheikh Abdimalik is dedicated to serving the Al Rahma community through education, spiritual guidance, and community outreach. His engaging teaching style and commitment to youth development have strengthened the bonds within our congregation.',
-    highlights: [
-      'Leads daily prayers and Taraweeh during Ramadan',
-      'Teaches Quran and Islamic studies classes',
-      'Coordinates community outreach programs',
-      'Mentors youth in their Islamic journey'
-    ]
   }
 ];
 
@@ -67,9 +55,9 @@ const Imams: React.FC = () => {
     <div className="imams-page">
       <SEO
         title="Our Imams & Scholars"
-        description="Meet the spiritual leaders of Al Rahma Islamic Center Phoenix. Sheikh Nageya (Senior Imam) and Sheikh Abdimalik bring decades of Islamic scholarship, Quran expertise, and community guidance."
+        description="Meet the spiritual leader of Al Rahma Islamic Center Phoenix. Sheikh Nageya (Senior Imam) brings decades of Islamic scholarship, Quran expertise, and community guidance."
         canonical="/imams"
-        keywords="imam phoenix az, islamic scholar phoenix, sheikh nageya, sheikh abdimalik, muslim leaders phoenix, spiritual guidance phoenix"
+        keywords="imam phoenix az, islamic scholar phoenix, sheikh nageya, muslim leaders phoenix, spiritual guidance phoenix"
       />
       <StructuredData
         breadcrumbs={[

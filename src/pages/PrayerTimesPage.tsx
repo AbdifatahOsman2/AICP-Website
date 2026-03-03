@@ -132,6 +132,30 @@ const PrayerTimesPage: React.FC = () => {
           { name: 'Home', url: '/' },
           { name: 'Prayer Times', url: '/prayer-times' },
         ]}
+        additionalSchemas={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'What are the daily prayer times at Al Rahma Islamic Center?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Our daily prayer times (Adhan and Iqamah) are updated daily. Please check the Prayer Times table on this page for the exact times for Fajr, Dhuhr, Asr, Maghrib, and Isha.'
+                }
+              },
+              {
+                '@type': 'Question',
+                name: 'Do you offer Jumu\'ah (Friday) prayers?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Yes, we offer Jumu\'ah services every Friday. Please check our weekly schedule or contact the mosque for the exact Khutbah time.'
+                }
+              }
+            ]
+          }
+        ]}
       />
       {/* Navigation Header - Same as AboutPage */}
       <motion.header

@@ -143,7 +143,7 @@ const Education: React.FC = () => {
         >
           <picture>
             <source srcSet="/class2.webp" type="image/webp" />
-            <img src="/class2.png" alt="Students learning at AICP" loading="lazy" decoding="async" />
+            <img src="/class2.webp" alt="Students learning at AICP" loading="lazy" decoding="async" />
           </picture>
           <div className="about-image-overlay"></div>
           <div className="about-image-caption">
@@ -294,7 +294,7 @@ const Education: React.FC = () => {
             >
               <picture>
                 <source srcSet="/class1.webp" type="image/webp" />
-                <img src="/class1.png" alt="AICP Learning Environment" loading="lazy" decoding="async" />
+                <img src="/class1.webp" alt="AICP Learning Environment" loading="lazy" decoding="async" />
               </picture>
             </motion.div>
           </motion.div>
@@ -342,7 +342,7 @@ const Education: React.FC = () => {
               <div className="edu-phone-frame">
                 <picture>
                   <source srcSet="/pic1 1.webp" type="image/webp" />
-                  <img src="/pic1 1.png" alt="Markaz Al Najah App" className="edu-phone-screenshot" loading="lazy" decoding="async" />
+                  <img src="/pic1 1.webp" alt="Markaz Al Najah App" className="edu-phone-screenshot" loading="lazy" decoding="async" />
                 </picture>
               </div>
             </motion.div>

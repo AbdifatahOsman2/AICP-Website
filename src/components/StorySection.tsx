@@ -56,7 +56,7 @@ export function StorySection() {
             <picture>
               <source srcSet="/plans.webp" type="image/webp" />
               <img
-                src="/plans.png"
+                src="/plans.webp"
                 alt="Al Rahma Islamic Center architectural plans"
                 loading="lazy"
                 decoding="async"
@@ -82,7 +82,7 @@ export function StorySection() {
             <picture>
               <source srcSet="/side.webp" type="image/webp" />
               <img
-                src="/side.png"
+                src="/side.webp"
                 alt="Al Rahma Islamic Center side view"
                 loading="lazy"
                 decoding="async"

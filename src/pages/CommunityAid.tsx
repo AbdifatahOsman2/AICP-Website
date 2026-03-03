@@ -113,7 +113,7 @@ const CommunityAid: React.FC = () => {
         <div className="ca-hero-image">
           <picture>
             <source srcSet="/inside.webp" type="image/webp" />
-            <img src="/inside.jpg" alt="Inside Al Rahma Islamic Center" loading="lazy" decoding="async" />
+            <img src="/inside.webp" alt="Inside Al Rahma Islamic Center" loading="lazy" decoding="async" />
           </picture>
           <div className="ca-hero-overlay"></div>
         </div>
@@ -174,7 +174,7 @@ const CommunityAid: React.FC = () => {
             >
               <picture>
                 <source srcSet="/Outside cleaning.webp" type="image/webp" />
-                <img src="/Outside cleaning.png" alt="Community volunteers cleaning outside the masjid" loading="lazy" decoding="async" />
+                <img src="/Outside cleaning.webp" alt="Community volunteers cleaning outside the masjid" loading="lazy" decoding="async" />
               </picture>
             </motion.div>
             <motion.div
