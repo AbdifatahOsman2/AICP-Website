@@ -6,10 +6,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
+const rootElement = document.getElementById('root') as HTMLElement;
+
+const app = (
   <React.StrictMode>
     <HelmetProvider>
       <BrowserRouter>
@@ -18,6 +17,14 @@ root.render(
     </HelmetProvider>
   </React.StrictMode>
 );
+
+// If react-snap has prerendered the page, hydrate instead of re-rendering
+if (rootElement.hasChildNodes()) {
+  ReactDOM.hydrateRoot(rootElement, app);
+} else {
+  const root = ReactDOM.createRoot(rootElement);
+  root.render(app);
+}
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

@@ -132,17 +132,17 @@ function getCurrentMinutes(): number {
 function calculateCountdown(nextPrayerTime: string): string {
   const currentMinutes = getCurrentMinutes();
   const prayerMinutes = timeToMinutes(nextPrayerTime);
-  
+
   let diffMinutes = prayerMinutes - currentMinutes;
-  
+
   // If negative, prayer is tomorrow
   if (diffMinutes < 0) {
     diffMinutes += 24 * 60;
   }
-  
+
   const hours = Math.floor(diffMinutes / 60);
   const minutes = diffMinutes % 60;
-  
+
   if (hours > 0) {
     return `${hours}h ${minutes}m`;
   }
@@ -155,14 +155,14 @@ function calculateCountdown(nextPrayerTime: string): string {
 function processPrayerTimes(data: PrayerTimesData): ProcessedPrayerTimes {
   const { timings, date } = data;
   const currentMinutes = getCurrentMinutes();
-  
+
   // Main prayers we want to display
   const prayerNames = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'] as const;
-  
+
   const prayers: PrayerTime[] = prayerNames.map((name) => {
     const time24 = timings[name].split(' ')[0]; // Remove any timezone suffix
     const prayerMinutes = timeToMinutes(time24);
-    
+
     return {
       name,
       time: formatTo12Hour(time24),
@@ -171,7 +171,7 @@ function processPrayerTimes(data: PrayerTimesData): ProcessedPrayerTimes {
       isPast: prayerMinutes < currentMinutes,
     };
   });
-  
+
   // Find next prayer
   let nextPrayer: PrayerTime | null = null;
   for (const prayer of prayers) {
@@ -181,19 +181,19 @@ function processPrayerTimes(data: PrayerTimesData): ProcessedPrayerTimes {
       break;
     }
   }
-  
+
   // If all prayers are past, next prayer is Fajr tomorrow
   if (!nextPrayer && prayers.length > 0) {
     prayers[0].isNext = true;
     nextPrayer = prayers[0];
   }
-  
+
   // Format Hijri date
   const hijriDate = `${date.hijri.day} ${date.hijri.month.en} ${date.hijri.year}`;
-  
+
   // Format Gregorian date
   const gregorianDate = `${date.gregorian.weekday.en}, ${date.gregorian.month.en} ${date.gregorian.day}, ${date.gregorian.year}`;
-  
+
   return {
     prayers,
     nextPrayer,
@@ -210,7 +210,7 @@ function processPrayerTimes(data: PrayerTimesData): ProcessedPrayerTimes {
 export async function fetchPrayerTimes(date?: Date): Promise<ProcessedPrayerTimes> {
   const targetDate = date || new Date();
   const dateStr = `${targetDate.getDate()}-${targetDate.getMonth() + 1}-${targetDate.getFullYear()}`;
-  
+
   const params = new URLSearchParams({
     city: PHOENIX_CONFIG.city,
     state: PHOENIX_CONFIG.state,
@@ -218,22 +218,22 @@ export async function fetchPrayerTimes(date?: Date): Promise<ProcessedPrayerTime
     method: PHOENIX_CONFIG.method.toString(),
     school: '0', // Shafi (standard)
   });
-  
+
   const url = `https://api.aladhan.com/v1/timingsByCity/${dateStr}?${params}`;
-  
+
   try {
     const response = await fetch(url);
-    
+
     if (!response.ok) {
       throw new Error(`API request failed: ${response.status}`);
     }
-    
+
     const json: AlAdhanResponse = await response.json();
-    
+
     if (json.code !== 200) {
       throw new Error(`API error: ${json.status}`);
     }
-    
+
     return processPrayerTimes(json.data);
   } catch (error) {
     console.error('Failed to fetch prayer times:', error);
@@ -245,7 +245,7 @@ export async function fetchPrayerTimes(date?: Date): Promise<ProcessedPrayerTime
  * Fetch prayer times calendar for a month
  */
 export async function fetchMonthlyPrayerTimes(
-  month: number, 
+  month: number,
   year: number
 ): Promise<PrayerTimesData[]> {
   const params = new URLSearchParams({
@@ -256,22 +256,22 @@ export async function fetchMonthlyPrayerTimes(
     month: month.toString(),
     year: year.toString(),
   });
-  
+
   const url = `https://api.aladhan.com/v1/calendarByCity/${year}/${month}?${params}`;
-  
+
   try {
     const response = await fetch(url);
-    
+
     if (!response.ok) {
       throw new Error(`API request failed: ${response.status}`);
     }
-    
+
     const json = await response.json();
-    
+
     if (json.code !== 200) {
       throw new Error(`API error: ${json.status}`);
     }
-    
+
     return json.data;
   } catch (error) {
     console.error('Failed to fetch monthly prayer times:', error);

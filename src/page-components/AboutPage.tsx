@@ -37,6 +37,30 @@ export function AboutPage() {
           { name: 'Home', url: '/' },
           { name: 'About', url: '/about' },
         ]}
+        additionalSchemas={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'What services does Al Rahma Islamic Center provide?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'We offer daily prayers, Jumu\'ah services, Islamic education, Arabic language classes, Quran studies, and community programs.'
+                }
+              },
+              {
+                '@type': 'Question',
+                name: 'Where is Al Rahma Islamic Center located?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'We are located at 2916 E McDowell Rd unit 15, Phoenix, AZ 85008.'
+                }
+              }
+            ]
+          }
+        ]}
       />
       {/* Navigation Header */}
       <motion.header
@@ -91,7 +115,7 @@ export function AboutPage() {
         >
           <picture>
             <source srcSet="/side.webp" type="image/webp" />
-            <img src="/side.png" alt="Al-Rahma Islamic Center Campus" loading="lazy" decoding="async" />
+            <img src="/side.webp" alt="Al-Rahma Islamic Center Campus" loading="lazy" decoding="async" />
           </picture>
           <div className="about-image-overlay"></div>
           <div className="about-image-caption">

@@ -25,7 +25,7 @@ export function MadrasahSection() {
             <picture>
               <source srcSet="/education.webp" type="image/webp" />
               <img
-                src="/education.png"
+                src="/education.webp"
                 alt="Arabic and Islamic education at Al-Rahma"
                 loading="lazy"
                 decoding="async"

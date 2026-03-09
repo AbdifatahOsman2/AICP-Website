@@ -26,18 +26,6 @@ const imams: Imam[] = [
       'Provides spiritual guidance and counseling',
       'Oversees religious education programs'
     ]
-  },
-  {
-    name: 'Sheikh Abdimalik',
-    title: 'Imam',
-    image: '/malik.webp',
-    description: 'Sheikh Abdimalik is dedicated to serving the Al Rahma community through education, spiritual guidance, and community outreach. His engaging teaching style and commitment to youth development have strengthened the bonds within our congregation.',
-    highlights: [
-      'Leads daily prayers and Taraweeh during Ramadan',
-      'Teaches Quran and Islamic studies classes',
-      'Coordinates community outreach programs',
-      'Mentors youth in their Islamic journey'
-    ]
   }
 ];
 
