@@ -11,6 +11,12 @@
 # production
 /build
 
+# Next.js build output (never commit these)
+/.next/
+/out/
+tsconfig.tsbuildinfo
+nextjs-err.txt
+
 # misc
 .DS_Store
 .env
