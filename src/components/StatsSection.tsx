@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { motion, useInView } from 'framer-motion';
 import { staggerContainer, fadeUp } from './animations';
@@ -17,19 +19,19 @@ export function StatsSection() {
   return (
     <section className="section-gallery stats-section" ref={ref}>
       <div className="container">
-        <motion.div 
+        <motion.div
           className="stats-grid"
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
           variants={staggerContainer}
         >
           {stats.map((stat, index) => (
-            <motion.div 
-              key={index} 
+            <motion.div
+              key={index}
               className="stat-card"
               variants={fadeUp}
-              whileHover={{ 
-                y: -8, 
+              whileHover={{
+                y: -8,
                 boxShadow: '0 30px 60px -15px rgba(0,0,0,0.12)',
                 backgroundColor: '#FAFAF8'
               }}

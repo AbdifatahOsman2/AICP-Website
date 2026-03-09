@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 
 const SITE_URL = 'https://masjidal-rahma.com';
 
@@ -11,7 +10,7 @@ const mosqueSchema = {
     name: 'Al Rahma Islamic Center of Phoenix',
     alternateName: ['AICP', 'Masjid Al-Rahma', 'Al Rahma Masjid'],
     description:
-        'Al Rahma Islamic Center of Phoenix (AICP) is a community mosque offering daily prayers, Jumu\'ah services, Islamic education, Arabic language classes, and community programs in Phoenix, Arizona.',
+        "Al Rahma Islamic Center of Phoenix (AICP) is a community mosque offering daily prayers, Jumu'ah services, Islamic education, Arabic language classes, and community programs in Phoenix, Arizona.",
     url: SITE_URL,
     telephone: '+1-602-574-8750',
     email: 'info@masjidal-rahma.com',
@@ -38,15 +37,7 @@ const mosqueSchema = {
     openingHoursSpecification: [
         {
             '@type': 'OpeningHoursSpecification',
-            dayOfWeek: [
-                'Monday',
-                'Tuesday',
-                'Wednesday',
-                'Thursday',
-                'Friday',
-                'Saturday',
-                'Sunday',
-            ],
+            dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
             opens: '05:00',
             closes: '22:00',
         },
@@ -120,13 +111,15 @@ export function StructuredData({ breadcrumbs, additionalSchemas }: StructuredDat
     }
 
     return (
-        <Helmet>
+        <>
             {schemas.map((schema, index) => (
-                <script key={index} type="application/ld+json">
-                    {JSON.stringify(schema)}
-                </script>
+                <script
+                    key={index}
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+                />
             ))}
-        </Helmet>
+        </>
     );
 }
 

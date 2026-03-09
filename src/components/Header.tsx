@@ -1,6 +1,9 @@
-import React from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 // Custom easing
 const easeOutExpo: [number, number, number, number] = [0.22, 1, 0.36, 1];
@@ -13,22 +16,33 @@ const navItems = [
   { label: 'Contact', href: '#contact', isRoute: false },
 ];
 
-interface HeaderProps {
-  isScrolled: boolean;
-  mobileMenuOpen: boolean;
-  setMobileMenuOpen: (open: boolean) => void;
-}
+export function Header() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
-export function Header({ isScrolled, mobileMenuOpen, setMobileMenuOpen }: HeaderProps) {
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [pathname]);
+
   return (
-    <motion.header 
+    <motion.header
       className={`header ${isScrolled ? 'header-scrolled' : ''}`}
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 1, ease: easeOutExpo, delay: 0.2 }}
     >
       <div className="header-container">
-        <Link to="/" className="logo">
+        <Link href="/" className="logo">
           <div className="logo-icon">
             <i className="fas fa-mosque"></i>
           </div>
@@ -39,13 +53,10 @@ export function Header({ isScrolled, mobileMenuOpen, setMobileMenuOpen }: Header
         </Link>
 
         <nav className="nav-desktop">
-          {navItems.map((item) => (
+          {navItems.map((item) =>
             item.isRoute ? (
               <motion.span key={item.label}>
-                <Link
-                  to={item.href}
-                  className="nav-link"
-                >
+                <Link href={item.href} className="nav-link">
                   <motion.span
                     whileHover={{ y: -2 }}
                     transition={{ duration: 0.3 }}
@@ -56,7 +67,7 @@ export function Header({ isScrolled, mobileMenuOpen, setMobileMenuOpen }: Header
                 </Link>
               </motion.span>
             ) : (
-              <motion.a 
+              <motion.a
                 key={item.label}
                 href={item.href}
                 whileHover={{ y: -2 }}
@@ -65,11 +76,11 @@ export function Header({ isScrolled, mobileMenuOpen, setMobileMenuOpen }: Header
                 {item.label}
               </motion.a>
             )
-          ))}
+          )}
         </nav>
 
         <div className="header-actions">
-          <Link to="/donate">
+          <Link href="/donate">
             <motion.div
               className="donate-btn"
               whileHover={{ scale: 1.05 }}
@@ -80,7 +91,7 @@ export function Header({ isScrolled, mobileMenuOpen, setMobileMenuOpen }: Header
               <span>Donate</span>
             </motion.div>
           </Link>
-          <button 
+          <button
             className="mobile-menu-btn hide-desktop"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
@@ -91,7 +102,7 @@ export function Header({ isScrolled, mobileMenuOpen, setMobileMenuOpen }: Header
       </div>
 
       {mobileMenuOpen && (
-        <motion.div 
+        <motion.div
           className="mobile-menu glass"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -99,17 +110,17 @@ export function Header({ isScrolled, mobileMenuOpen, setMobileMenuOpen }: Header
           transition={{ duration: 0.4 }}
         >
           <nav className="mobile-nav">
-            {navItems.map((item) => (
+            {navItems.map((item) =>
               item.isRoute ? (
-                <Link 
+                <Link
                   key={item.label}
-                  to={item.href}
+                  href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {item.label}
                 </Link>
               ) : (
-                <a 
+                <a
                   key={item.label}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
@@ -117,9 +128,9 @@ export function Header({ isScrolled, mobileMenuOpen, setMobileMenuOpen }: Header
                   {item.label}
                 </a>
               )
-            ))}
+            )}
             <Link
-              to="/donate"
+              href="/donate"
               onClick={() => setMobileMenuOpen(false)}
               style={{ textDecoration: 'none' }}
             >

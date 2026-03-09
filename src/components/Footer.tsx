@@ -1,6 +1,8 @@
+'use client';
+
 import React from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -36,8 +38,8 @@ export function Footer() {
   const isInView = useInView(ref, { once: true, margin: '-50px' });
 
   return (
-    <motion.footer 
-      className="footer" 
+    <motion.footer
+      className="footer"
       ref={ref}
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : {}}
@@ -46,7 +48,7 @@ export function Footer() {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-brand">
-            <Link to="/" className="logo footer-logo" onClick={scrollToTop}>
+            <Link href="/" className="logo footer-logo" onClick={scrollToTop}>
               <div className="logo-icon">
                 <i className="fas fa-mosque"></i>
               </div>
@@ -64,7 +66,7 @@ export function Footer() {
             </a>
             <div className="footer-social">
               {socialLinks.map((social) => (
-                <motion.a 
+                <motion.a
                   key={social.icon}
                   href={social.href}
                   target="_blank"
@@ -82,14 +84,10 @@ export function Footer() {
 
           <div className="footer-links-column">
             <h5 className="footer-links-title">Discover</h5>
-            {footerLinks.discover.map((link) => (
+            {footerLinks.discover.map((link) =>
               link.isRoute ? (
                 <motion.span key={link.label}>
-                  <Link
-                    to={link.href}
-                    className="footer-link"
-                    onClick={scrollToTop}
-                  >
+                  <Link href={link.href} className="footer-link" onClick={scrollToTop}>
                     <motion.span
                       whileHover={{ x: 4, color: '#083475' }}
                       transition={{ duration: 0.3 }}
@@ -110,19 +108,15 @@ export function Footer() {
                   {link.label}
                 </motion.a>
               )
-            ))}
+            )}
           </div>
 
           <div className="footer-links-column">
             <h5 className="footer-links-title">Community</h5>
-            {footerLinks.community.map((link) => (
+            {footerLinks.community.map((link) =>
               link.isRoute ? (
                 <motion.span key={link.label}>
-                  <Link
-                    to={link.href}
-                    className="footer-link"
-                    onClick={scrollToTop}
-                  >
+                  <Link href={link.href} className="footer-link" onClick={scrollToTop}>
                     <motion.span
                       whileHover={{ x: 4, color: '#083475' }}
                       transition={{ duration: 0.3 }}
@@ -136,8 +130,8 @@ export function Footer() {
                 <motion.a
                   key={link.label}
                   href={link.href}
-                  target={link.external ? '_blank' : undefined}
-                  rel={link.external ? 'noopener noreferrer' : undefined}
+                  target={(link as any).external ? '_blank' : undefined}
+                  rel={(link as any).external ? 'noopener noreferrer' : undefined}
                   className="footer-link"
                   whileHover={{ x: 4, color: '#083475' }}
                   transition={{ duration: 0.3 }}
@@ -145,19 +139,15 @@ export function Footer() {
                   {link.label}
                 </motion.a>
               )
-            ))}
+            )}
           </div>
 
           <div className="footer-links-column">
             <h5 className="footer-links-title">Resources</h5>
-            {footerLinks.resources.map((link) => (
+            {footerLinks.resources.map((link) =>
               link.isRoute ? (
                 <motion.span key={link.label}>
-                  <Link
-                    to={link.href}
-                    className="footer-link"
-                    onClick={scrollToTop}
-                  >
+                  <Link href={link.href} className="footer-link" onClick={scrollToTop}>
                     <motion.span
                       whileHover={{ x: 4, color: '#083475' }}
                       transition={{ duration: 0.3 }}
@@ -178,7 +168,7 @@ export function Footer() {
                   {link.label}
                 </motion.a>
               )
-            ))}
+            )}
           </div>
         </div>
 

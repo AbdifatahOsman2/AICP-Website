@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { usePrayerTimes } from '../hooks/usePrayerTimes';
@@ -29,7 +31,7 @@ interface PrayerTimesBarProps {
  * <PrayerTimesBar variant="compact" />
  * ```
  */
-export function PrayerTimesBar({ 
+export function PrayerTimesBar({
   variant = 'hero',
   showDate = false,
   showHijri = false,
@@ -90,10 +92,10 @@ export function PrayerTimesBar({
             {showHijri && <span className="hijri-date">{hijriDate}</span>}
           </div>
         )}
-        
+
         <div className="prayer-times-grid">
           {prayers.map((prayer) => (
-            <div 
+            <div
               key={prayer.name}
               className={`prayer-time-card ${prayer.isNext ? 'next' : ''} ${prayer.isPast ? 'past' : ''}`}
             >
@@ -117,7 +119,7 @@ export function PrayerTimesBar({
         <div className="prayer-bar-next-info">
           <span className="label">Next Prayer</span>
           <span className="prayer-bar-next-name">
-            {nextPrayer?.name || 'Fajr'} 
+            {nextPrayer?.name || 'Fajr'}
             <span className="countdown-text"> in {countdown}</span>
           </span>
         </div>
@@ -125,11 +127,11 @@ export function PrayerTimesBar({
 
       <div className="prayer-bar-times">
         {prayers.map((prayer) => (
-          <motion.div 
-            key={prayer.name} 
+          <motion.div
+            key={prayer.name}
             className={`prayer-time-item ${prayer.isNext ? 'active' : ''} ${prayer.isPast ? 'past' : ''}`}
-            whileHover={{ 
-              scale: 1.08, 
+            whileHover={{
+              scale: 1.08,
               backgroundColor: 'rgba(255,255,255,0.1)',
             }}
             transition={{ duration: 0.3 }}

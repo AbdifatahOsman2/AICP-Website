@@ -9,7 +9,6 @@ export { ConnectSection } from './ConnectSection';
 export { NewsletterSection } from './NewsletterSection';
 export { Footer } from './Footer';
 export { PrayerTimesBar } from './PrayerTimesBar';
-export { SEO } from './SEO';
 export { StructuredData } from './StructuredData';
 export {
   FadeUp,

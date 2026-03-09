@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { motion, useInView } from 'framer-motion';
 import { staggerContainer, fadeUp } from './animations';
@@ -9,7 +11,7 @@ export function ConnectSection() {
   return (
     <section className="section-gallery" id="contact" ref={ref}>
       <div className="container">
-        <motion.div 
+        <motion.div
           className="section-header centered"
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
@@ -21,23 +23,23 @@ export function ConnectSection() {
           </motion.div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="connect-grid"
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
           variants={staggerContainer}
         >
-          <motion.div 
+          <motion.div
             className="connect-card"
             variants={fadeUp}
-            whileHover={{ 
-              y: -12, 
+            whileHover={{
+              y: -12,
               boxShadow: '0 40px 80px -20px rgba(0,0,0,0.12)',
               backgroundColor: '#FAFAF8'
             }}
             transition={{ duration: 0.5 }}
           >
-            <motion.div 
+            <motion.div
               className="connect-icon"
               whileHover={{ scale: 1.1, rotate: 5 }}
               transition={{ type: 'spring', stiffness: 300 }}
@@ -48,7 +50,7 @@ export function ConnectSection() {
             <p className="connect-description">
               Please stop by or call us. We're here to help with any questions.
             </p>
-            <motion.a 
+            <motion.a
               href="tel:+16025748750"
               className="btn btn-primary"
               whileHover={{ scale: 1.03, y: -2 }}
@@ -60,17 +62,17 @@ export function ConnectSection() {
             </motion.a>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="connect-card"
             variants={fadeUp}
-            whileHover={{ 
-              y: -12, 
+            whileHover={{
+              y: -12,
               boxShadow: '0 40px 80px -20px rgba(0,0,0,0.12)',
               backgroundColor: '#FAFAF8'
             }}
             transition={{ duration: 0.5 }}
           >
-            <motion.div 
+            <motion.div
               className="connect-icon"
               whileHover={{ scale: 1.1, rotate: -5 }}
               transition={{ type: 'spring', stiffness: 300 }}
@@ -81,7 +83,7 @@ export function ConnectSection() {
             <p className="connect-description">
               2916 E McDowell Rd unit 15, Phoenix, AZ 85008
             </p>
-            <motion.a 
+            <motion.a
               href="https://maps.google.com/?q=2916+E+McDowell+Rd+unit+15+Phoenix+AZ+85008"
               target="_blank"
               rel="noopener noreferrer"

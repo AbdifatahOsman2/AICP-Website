@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useRef, useCallback } from 'react';
 import { motion, useInView, Variants, useSpring, useMotionValue } from 'framer-motion';
 
@@ -35,11 +37,11 @@ export const durations = {
 // Animation Variants with proper typing
 export const fadeUp: Variants = {
   hidden: { opacity: 0, y: 60 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     y: 0,
-    transition: { 
-      duration: 1.2, 
+    transition: {
+      duration: 1.2,
       ease: easeOutExpo
     }
   }
@@ -47,7 +49,7 @@ export const fadeUp: Variants = {
 
 export const fadeIn: Variants = {
   hidden: { opacity: 0 },
-  visible: { 
+  visible: {
     opacity: 1,
     transition: { duration: 1, ease: 'easeOut' }
   }
@@ -66,11 +68,11 @@ export const staggerContainer: Variants = {
 
 export const scaleIn: Variants = {
   hidden: { opacity: 0, scale: 0.9 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     scale: 1,
-    transition: { 
-      duration: 1, 
+    transition: {
+      duration: 1,
       ease: easeOutExpo
     }
   }

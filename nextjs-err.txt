@@ -1,0 +1,84 @@
+﻿Γû▓ Next.js 16.1.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://100.120.126.27:3000
+
+Γ£ô Starting...
+node : ΓÜá Minimum recommended TypeScript version is v5.1.0, older versions can 
+potentially be incompatible with Next.js. Detected: 4.9.5
+At line:1 char:1
++ node ./node_modules/next/dist/bin/next dev 2>&1 | Out-File -FilePath  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (ΓÜá Minimum rec...Detected: 4.9.5:String) 
+    [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+  We detected TypeScript in your project and reconfigured your tsconfig.json file for you.
+  The following suggested values were added to your tsconfig.json. These values can be changed to fit your project's needs:
+
+  	- include was updated to add '.next/dev/types/**/*.ts'
+
+  The following mandatory changes were made to your tsconfig.json:
+
+  	- jsx was set to react-jsx (next.js uses the React automatic runtime)
+
+Γ£ô Ready in 722ms
+ GET / 200 in 2.1s (compile: 1882ms, render: 233ms)
+ GET / 200 in 101ms (compile: 43ms, render: 57ms)
+ GET / 200 in 156ms (compile: 23ms, render: 132ms)
+ GET / 200 in 120ms (compile: 5ms, render: 114ms)
+ GET / 200 in 118ms (compile: 4ms, render: 115ms)
+ GET / 200 in 136ms (compile: 4ms, render: 132ms)
+ GET / 200 in 116ms (compile: 4ms, render: 113ms)
+ GET / 200 in 138ms (compile: 3ms, render: 135ms)
+ GET / 200 in 115ms (compile: 4ms, render: 111ms)
+ GET / 200 in 111ms (compile: 4ms, render: 107ms)
+ GET / 200 in 108ms (compile: 4ms, render: 104ms)
+ GET / 200 in 106ms (compile: 4ms, render: 102ms)
+ GET / 200 in 106ms (compile: 4ms, render: 102ms)
+ GET / 200 in 102ms (compile: 3ms, render: 99ms)
+ GET / 200 in 101ms (compile: 4ms, render: 98ms)
+ GET / 200 in 120ms (compile: 4ms, render: 116ms)
+ GET / 200 in 103ms (compile: 3ms, render: 100ms)
+ GET / 200 in 107ms (compile: 4ms, render: 103ms)
+ GET / 200 in 110ms (compile: 3ms, render: 107ms)
+ GET / 200 in 132ms (compile: 4ms, render: 129ms)
+ GET / 200 in 116ms (compile: 4ms, render: 112ms)
+ GET / 200 in 133ms (compile: 3ms, render: 130ms)
+ GET / 200 in 117ms (compile: 3ms, render: 113ms)
+ GET / 200 in 143ms (compile: 5ms, render: 138ms)
+ GET / 200 in 121ms (compile: 4ms, render: 117ms)
+ GET / 200 in 101ms (compile: 3ms, render: 98ms)
+ GET / 200 in 83ms (compile: 3ms, render: 79ms)
+ GET / 200 in 59ms (compile: 5ms, render: 54ms)
+ GET / 200 in 139ms (compile: 32ms, render: 107ms)
+ GET / 200 in 123ms (compile: 3ms, render: 121ms)
+ GET / 200 in 124ms (compile: 3ms, render: 121ms)
+ GET / 200 in 126ms (compile: 4ms, render: 122ms)
+ GET / 200 in 110ms (compile: 3ms, render: 107ms)
+ GET / 200 in 109ms (compile: 3ms, render: 106ms)
+ GET / 200 in 108ms (compile: 3ms, render: 105ms)
+ GET / 200 in 106ms (compile: 3ms, render: 103ms)
+ GET / 200 in 120ms (compile: 3ms, render: 117ms)
+ GET / 200 in 103ms (compile: 6ms, render: 97ms)
+ GET / 200 in 100ms (compile: 3ms, render: 97ms)
+ GET / 200 in 106ms (compile: 3ms, render: 103ms)
+ GET / 200 in 107ms (compile: 3ms, render: 104ms)
+ GET / 200 in 105ms (compile: 3ms, render: 102ms)
+ GET / 200 in 121ms (compile: 3ms, render: 118ms)
+ GET / 200 in 104ms (compile: 3ms, render: 101ms)
+ GET / 200 in 98ms (compile: 3ms, render: 95ms)
+ GET / 200 in 98ms (compile: 3ms, render: 95ms)
+ GET / 200 in 100ms (compile: 3ms, render: 97ms)
+ GET / 200 in 101ms (compile: 2ms, render: 99ms)
+ GET / 200 in 127ms (compile: 3ms, render: 124ms)
+ GET / 200 in 144ms (compile: 3ms, render: 141ms)
+ GET / 200 in 129ms (compile: 5ms, render: 124ms)
+ GET / 200 in 136ms (compile: 2ms, render: 134ms)
+ GET / 200 in 117ms (compile: 2ms, render: 115ms)
+ GET / 200 in 95ms (compile: 3ms, render: 92ms)
+ GET / 200 in 72ms (compile: 5ms, render: 68ms)
+ GET / 200 in 37ms (compile: 5ms, render: 32ms)
+Γ£ô Compiled in 21ms
+ GET / 200 in 60ms (compile: 32ms, render: 28ms)
+Γ£ô Compiled in 12ms

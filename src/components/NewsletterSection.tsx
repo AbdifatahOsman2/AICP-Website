@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { staggerContainer, fadeUp, SuccessButton } from './animations';

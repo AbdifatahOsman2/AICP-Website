@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { motion, useInView } from 'framer-motion';
 import { staggerContainer, fadeUp, scaleIn } from './animations';
@@ -15,29 +17,29 @@ export function QuoteSection() {
           variants={staggerContainer}
           className="quote-content"
         >
-          <motion.i 
+          <motion.i
             className="fas fa-moon quote-icon"
             variants={scaleIn}
           />
-          <motion.h2 
+          <motion.h2
             className="quote-text"
             variants={fadeUp}
           >
-            "Our Lord descends every night to the lowest heaven... 
+            "Our Lord descends every night to the lowest heaven...
             Who would invoke Me, so that I would answer him?"
           </motion.h2>
-          <motion.p 
+          <motion.p
             className="quote-attribution"
             variants={fadeUp}
           >
             — Sahih Bukhari & Muslim
           </motion.p>
-          <motion.p 
+          <motion.p
             className="quote-description"
             variants={fadeUp}
           >
-            The Prophet, sallalahu alayhe wa sallam, taught us about the blessed 
-            hour of the night. We strive to create an environment that nurtures 
+            The Prophet, sallalahu alayhe wa sallam, taught us about the blessed
+            hour of the night. We strive to create an environment that nurtures
             the soul, fosters brotherhood, and serves humanity.
           </motion.p>
         </motion.div>
