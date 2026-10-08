@@ -310,7 +310,7 @@ const Education: React.FC = () => {
               <span className="edu-section-label">STAY CONNECTED</span>
               <h2 className="edu-section-title">Track Progress with Our App</h2>
               <p className="edu-app-description">
-                Download the Markaz Al Najah app to stay updated on your child's learning journey.
+                Download the Alrhma Academy app to stay updated on your child's learning journey.
                 View lesson history, receive teacher feedback, and never miss an important update.
               </p>
               <div className="edu-app-buttons">
@@ -337,7 +337,7 @@ const Education: React.FC = () => {
               <div className="edu-phone-frame">
                 <picture>
                   <source srcSet="/pic1 1.webp" type="image/webp" />
-                  <img src="/pic1 1.webp" alt="Markaz Al Najah App" className="edu-phone-screenshot" loading="lazy" decoding="async" />
+                  <img src="/pic1 1.webp" alt="Alrhma Academy App" className="edu-phone-screenshot" loading="lazy" decoding="async" />
                 </picture>
               </div>
             </motion.div>

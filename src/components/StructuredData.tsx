@@ -1,26 +1,38 @@
-import React from 'react';
-
 const SITE_URL = 'https://masjidal-rahma.com';
+
+// ── Canonical NAP ─────────────────────────────────────────────────────────────
+// Name, Address, Phone must be IDENTICAL here, in Google Business Profile,
+// and in every local directory citation for AI trust signals.
+const NAP = {
+    name: 'Al Rahma Islamic Center of Phoenix',
+    streetAddress: '2916 E McDowell Rd, Unit 15',
+    addressLocality: 'Phoenix',
+    addressRegion: 'AZ',
+    postalCode: '85008',
+    addressCountry: 'US',
+    telephone: '+1-602-574-8750',   // E.164 canonical format
+    displayPhone: '(602) 574-8750', // Human-readable display format
+};
 
 // Mosque + Organization structured data
 const mosqueSchema = {
     '@context': 'https://schema.org',
-    '@type': 'Mosque',
+    '@type': ['Mosque', 'LocalBusiness'],
     '@id': `${SITE_URL}/#mosque`,
-    name: 'Al Rahma Islamic Center of Phoenix',
-    alternateName: ['AICP', 'Masjid Al-Rahma', 'Al Rahma Masjid'],
+    name: NAP.name,
+    alternateName: ['AICP', 'Masjid Al-Rahma', 'Al Rahma Masjid', 'Al-Rahma Islamic Center'],
     description:
-        "Al Rahma Islamic Center of Phoenix (AICP) is a community mosque offering daily prayers, Jumu'ah services, Islamic education, Arabic language classes, and community programs in Phoenix, Arizona.",
+        "Al Rahma Islamic Center of Phoenix (AICP) is a community mosque at 2916 E McDowell Rd, Unit 15, Phoenix, AZ 85008. AICP offers daily congregational prayers (Fajr, Dhuhr, Asr, Maghrib, Isha), Jumu'ah Friday prayer, Qur'an classes, Arabic language education, Islamic studies, youth programs, women's halaqahs, Janazah services, zakat assistance, and newcomer support for the Phoenix Muslim community.",
     url: SITE_URL,
-    telephone: '+1-602-574-8750',
+    telephone: NAP.telephone,
     email: 'info@masjidal-rahma.com',
     address: {
         '@type': 'PostalAddress',
-        streetAddress: '2916 E McDowell Rd unit 15',
-        addressLocality: 'Phoenix',
-        addressRegion: 'AZ',
-        postalCode: '85008',
-        addressCountry: 'US',
+        streetAddress: NAP.streetAddress,
+        addressLocality: NAP.addressLocality,
+        addressRegion: NAP.addressRegion,
+        postalCode: NAP.postalCode,
+        addressCountry: NAP.addressCountry,
     },
     geo: {
         '@type': 'GeoCoordinates',
@@ -28,7 +40,12 @@ const mosqueSchema = {
         longitude: -112.0324,
     },
     image: `${SITE_URL}/aicp-logo.png`,
-    logo: `${SITE_URL}/aicp-logo.png`,
+    logo: {
+        '@type': 'ImageObject',
+        url: `${SITE_URL}/aicp-logo.png`,
+        width: 512,
+        height: 512,
+    },
     sameAs: [
         'https://www.facebook.com/AlRahmaAZ/',
         'https://www.instagram.com/masjidalrahma/',
@@ -42,9 +59,45 @@ const mosqueSchema = {
             closes: '22:00',
         },
     ],
-    hasMap: 'https://maps.google.com/?q=2916+E+McDowell+Rd+unit+15+Phoenix+AZ+85008',
+    hasMap: `https://maps.google.com/?q=2916+E+McDowell+Rd+Unit+15+Phoenix+AZ+85008`,
     isAccessibleForFree: true,
     publicAccess: true,
+    priceRange: 'Free',
+    currenciesAccepted: 'USD',
+    paymentAccepted: 'Cash, Check, Online',
+    // Geographic service area — used by AI to answer "mosque near me in Phoenix"
+    areaServed: [
+        { '@type': 'City', name: 'Phoenix', containedIn: { '@type': 'State', name: 'Arizona' } },
+        { '@type': 'City', name: 'Scottsdale' },
+        { '@type': 'City', name: 'Tempe' },
+        { '@type': 'City', name: 'Mesa' },
+        { '@type': 'City', name: 'Glendale' },
+        { '@type': 'AdministrativeArea', name: 'Maricopa County' },
+    ],
+    // Topical authority signals — AI engines use these to answer domain questions
+    knowsAbout: [
+        'Islamic prayer times in Phoenix AZ',
+        "Jumu'ah Friday prayer Phoenix",
+        'Qur\'an classes Phoenix Arizona',
+        'Arabic language classes Phoenix',
+        'Islamic education for children Phoenix',
+        'Muslim community Phoenix Arizona',
+        'Halal food assistance Phoenix',
+        'Zakat distribution Phoenix',
+        'Janazah funeral services Phoenix',
+        'Nikah Islamic marriage Phoenix',
+        'Muslim newcomer support Phoenix',
+        'Somali Muslim community Phoenix',
+        'Islamic center Maricopa County',
+        'Masjid Phoenix AZ',
+    ],
+    amenityFeature: [
+        { '@type': 'LocationFeatureSpecification', name: "Women's prayer area", value: true },
+        { '@type': 'LocationFeatureSpecification', name: 'Wudu facilities', value: true },
+        { '@type': 'LocationFeatureSpecification', name: 'Parking', value: true },
+        { '@type': 'LocationFeatureSpecification', name: "Children's Islamic school", value: true },
+        { '@type': 'LocationFeatureSpecification', name: 'Wheelchair accessible', value: true },
+    ],
 };
 
 const organizationSchema = {

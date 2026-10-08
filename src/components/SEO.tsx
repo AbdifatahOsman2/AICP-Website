@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import Head from 'next/head';
 
 interface SEOProps {
     title?: string;
@@ -30,7 +30,7 @@ export function SEO({
     const canonicalUrl = canonical ? `${SITE_URL}${canonical}` : undefined;
 
     return (
-        <Helmet>
+        <Head>
             {/* Primary Meta Tags */}
             <title>{fullTitle}</title>
             <meta name="description" content={description} />
@@ -58,7 +58,7 @@ export function SEO({
             {/* Additional SEO */}
             <meta name="geo.placename" content="Phoenix, Arizona" />
             <meta name="geo.region" content="US-AZ" />
-        </Helmet>
+        </Head>
     );
 }
 

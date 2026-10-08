@@ -26,11 +26,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://masjidal-rahma.com/donate</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://masjidal-rahma.com/islamic-calendar</loc>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
@@ -54,5 +49,10 @@
     <loc>https://masjidal-rahma.com/register</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://masjidal-rahma.com/faq</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>

@@ -1,9 +1,5 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import App from './App';
+// This file is kept as a placeholder.
+// The CRA App component no longer exists — the app is powered by Next.js App Router.
+// Add real tests here as needed.
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+export {};

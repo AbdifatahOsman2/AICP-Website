@@ -80,7 +80,12 @@ export function Header() {
         </nav>
 
         <div className="header-actions">
-          <Link href="/donate">
+          <a
+            href="https://donation.masjidal.com/Al-Rahma/campaign/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ textDecoration: 'none' }}
+          >
             <motion.div
               className="donate-btn"
               whileHover={{ scale: 1.05 }}
@@ -90,7 +95,7 @@ export function Header() {
               <i className="fas fa-heart"></i>
               <span>Donate</span>
             </motion.div>
-          </Link>
+          </a>
           <button
             className="mobile-menu-btn hide-desktop"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -129,8 +134,10 @@ export function Header() {
                 </a>
               )
             )}
-            <Link
-              href="/donate"
+            <a
+              href="https://donation.masjidal.com/Al-Rahma/campaign/"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setMobileMenuOpen(false)}
               style={{ textDecoration: 'none' }}
             >
@@ -142,7 +149,7 @@ export function Header() {
                 <i className="fas fa-heart"></i>
                 Donate
               </motion.div>
-            </Link>
+            </a>
           </nav>
         </motion.div>
       )}

@@ -13,6 +13,12 @@ const footerLinks = {
     { label: 'About Us', href: '/about', isRoute: true },
     { label: 'Our Imams', href: '/imams', isRoute: true },
     { label: 'Islamic Calendar', href: '/islamic-calendar', isRoute: true },
+    {
+      label: 'Umrah Trip',
+      href: 'https://docs.google.com/forms/d/e/1FAIpQLSdRfwkyqlCYwuPavmeUS35uBj3znP2MRIokkkRK_Xa3jIDM2w/viewform?pli=1',
+      external: true,
+      isRoute: false,
+    },
   ],
   community: [
     { label: 'Prayer Schedule', href: '/prayer-times', isRoute: true },
@@ -24,6 +30,7 @@ const footerLinks = {
     { label: 'Daily Prayers', href: '/prayer-times', isRoute: true },
     { label: 'Islamic Education', href: '/education', isRoute: true },
     { label: 'Community Aid', href: '/community-aid', isRoute: true },
+    { label: 'FAQ', href: '/faq', isRoute: true },
   ],
 };
 
@@ -101,6 +108,8 @@ export function Footer() {
                 <motion.a
                   key={link.label}
                   href={link.href}
+                  target={(link as any).external ? '_blank' : undefined}
+                  rel={(link as any).external ? 'noopener noreferrer' : undefined}
                   className="footer-link"
                   whileHover={{ x: 4, color: '#083475' }}
                   transition={{ duration: 0.3 }}
