@@ -8,11 +8,32 @@ export function NewsletterSection() {
   const ref = React.useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [email, setEmail] = useState('');
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const handleSubscribe = async () => {
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    // TODO: Integrate with actual newsletter service
+    const trimmed = email.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!trimmed || !emailRegex.test(trimmed)) {
+      setErrorMsg('Please enter a valid email address.');
+      throw new Error('Invalid email');
+    }
+
+    setErrorMsg(null);
+    const res = await fetch('/api/send-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        formType: 'newsletter',
+        data: { email: trimmed },
+      }),
+    });
+
+    const json = await res.json();
+    if (!res.ok || !json.success) {
+      setErrorMsg(json.error || 'Unable to subscribe. Please try again.');
+      throw new Error(json.error || 'Failed');
+    }
+
     setEmail('');
   };
 
@@ -41,7 +62,10 @@ export function NewsletterSection() {
               className="input"
               placeholder="Enter your email address"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                if (errorMsg) setErrorMsg(null);
+              }}
               aria-label="Email address"
             />
             <SuccessButton
@@ -55,6 +79,11 @@ export function NewsletterSection() {
               Subscribe
             </SuccessButton>
           </motion.div>
+          {errorMsg && (
+            <p style={{ color: '#ef4444', fontSize: '13px', marginTop: '8px' }}>
+              {errorMsg}
+            </p>
+          )}
         </motion.div>
       </div>
     </section>

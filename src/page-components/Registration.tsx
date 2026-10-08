@@ -41,6 +41,9 @@ const Registration: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [stepError, setStepError] = useState<string | null>(null);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [agreedTerms, setAgreedTerms] = useState(false);
 
   const [formData, setFormData] = useState<FormData>({
     studentFirstName: '',
@@ -84,6 +87,7 @@ const Registration: React.FC = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    if (stepError) setStepError(null);
   };
 
   const handleProgramChange = (program: string) => {
@@ -93,25 +97,92 @@ const Registration: React.FC = () => {
         ? prev.programs.filter(p => p !== program)
         : [...prev.programs, program]
     }));
+    if (stepError) setStepError(null);
+  };
+
+  const validateStep = (step: number): string | null => {
+    if (step === 1) {
+      if (!formData.studentFirstName.trim() || !formData.studentLastName.trim()) {
+        return "Please enter the student's first and last name.";
+      }
+      if (!formData.dateOfBirth) {
+        return "Please provide the student's date of birth.";
+      }
+      if (!formData.gender) {
+        return "Please select the student's gender.";
+      }
+    }
+    if (step === 2) {
+      if (!formData.parentFirstName.trim() || !formData.parentLastName.trim()) {
+        return "Please enter the parent/guardian's first and last name.";
+      }
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!formData.email.trim() || !emailRegex.test(formData.email)) {
+        return 'Please provide a valid parent email address.';
+      }
+      if (!formData.phone.trim()) {
+        return 'Please provide a contact phone number.';
+      }
+    }
+    if (step === 3) {
+      if (formData.programs.length === 0) {
+        return 'Please select at least one program.';
+      }
+      if (!formData.schedule) {
+        return 'Please select a preferred class schedule.';
+      }
+    }
+    return null;
   };
 
   const nextStep = () => {
+    const error = validateStep(currentStep);
+    if (error) {
+      setStepError(error);
+      return;
+    }
+    setStepError(null);
     if (currentStep < 4) setCurrentStep(currentStep + 1);
   };
 
   const prevStep = () => {
+    setStepError(null);
     if (currentStep > 1) setCurrentStep(currentStep - 1);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!agreedTerms) {
+      setSubmitError('Please agree to the terms and conditions before submitting.');
+      return;
+    }
+    setSubmitError(null);
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    try {
+      const res = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          formType: 'registration',
+          data: formData,
+        }),
+      });
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+      const json = await res.json();
+      if (!res.ok || !json.success) {
+        throw new Error(json.error || 'Failed to submit registration');
+      }
+
+      setIsSubmitted(true);
+    } catch (err: any) {
+      console.error('Registration submission error:', err);
+      setSubmitError(
+        err.message || 'There was an issue submitting your registration. Please try again or call (602) 574-8750.'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const programs = [
@@ -688,17 +759,62 @@ const Registration: React.FC = () => {
 
                 <div className="reg-terms">
                   <label className="reg-checkbox-label">
-                    <input type="checkbox" required />
+                    <input
+                      type="checkbox"
+                      checked={agreedTerms}
+                      onChange={(e) => {
+                        setAgreedTerms(e.target.checked);
+                        if (submitError) setSubmitError(null);
+                      }}
+                      required
+                    />
                     <span>I agree to the <strong>terms and conditions</strong> and <strong>privacy policy</strong>. I understand that registration is subject to availability and confirmation.</span>
                   </label>
                 </div>
               </motion.div>
             )}
 
+            {/* Error Banners */}
+            {stepError && (
+              <div style={{
+                margin: '16px 0',
+                padding: '12px 16px',
+                borderRadius: '8px',
+                backgroundColor: '#fef2f2',
+                border: '1px solid #fecaca',
+                color: '#dc2626',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                fontSize: '14px',
+              }}>
+                <i className="fas fa-exclamation-circle"></i>
+                <span>{stepError}</span>
+              </div>
+            )}
+
+            {submitError && (
+              <div style={{
+                margin: '16px 0',
+                padding: '12px 16px',
+                borderRadius: '8px',
+                backgroundColor: '#fef2f2',
+                border: '1px solid #fecaca',
+                color: '#dc2626',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                fontSize: '14px',
+              }}>
+                <i className="fas fa-exclamation-circle"></i>
+                <span>{submitError}</span>
+              </div>
+            )}
+
             {/* Form Navigation */}
             <div className="reg-form-nav">
               {currentStep > 1 && (
-                <button type="button" onClick={prevStep} className="reg-btn-secondary">
+                <button type="button" onClick={prevStep} className="reg-btn-secondary" disabled={isSubmitting}>
                   <i className="fas fa-arrow-left"></i>
                   Previous
                 </button>
@@ -713,7 +829,7 @@ const Registration: React.FC = () => {
                 <button
                   type="submit"
                   className="reg-btn-submit"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !agreedTerms}
                 >
                   {isSubmitting ? (
                     <>

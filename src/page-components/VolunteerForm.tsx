@@ -29,6 +29,7 @@ const volunteerAreas = [
 const VolunteerForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [formData, setFormData] = useState<FormData>({
     firstName: '',
     lastName: '',
@@ -43,6 +44,7 @@ const VolunteerForm: React.FC = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    if (submitError) setSubmitError(null);
   };
 
   const handleInterestToggle = (interestId: string) => {
@@ -52,17 +54,49 @@ const VolunteerForm: React.FC = () => {
         ? prev.interests.filter(i => i !== interestId)
         : [...prev.interests, interestId]
     }));
+    if (submitError) setSubmitError(null);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (formData.interests.length === 0) {
+      setSubmitError('Please select at least one area of interest.');
+      return;
+    }
+    setSubmitError(null);
     setIsSubmitting(true);
 
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    try {
+      const readableInterests = formData.interests.map(
+        id => volunteerAreas.find(a => a.id === id)?.label || id
+      );
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+      const res = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          formType: 'volunteer',
+          data: {
+            ...formData,
+            interests: readableInterests,
+          },
+        }),
+      });
+
+      const json = await res.json();
+      if (!res.ok || !json.success) {
+        throw new Error(json.error || 'Failed to submit volunteer registration');
+      }
+
+      setIsSubmitted(true);
+    } catch (err: any) {
+      console.error('Volunteer registration error:', err);
+      setSubmitError(
+        err.message || 'There was an issue submitting your registration. Please try again or call (602) 574-8750.'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSubmitted) {
@@ -307,6 +341,23 @@ const VolunteerForm: React.FC = () => {
 
             {/* Submit */}
             <div className="vf-submit-section">
+              {submitError && (
+                <div style={{
+                  marginBottom: '16px',
+                  padding: '12px 16px',
+                  borderRadius: '8px',
+                  backgroundColor: '#fef2f2',
+                  border: '1px solid #fecaca',
+                  color: '#dc2626',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  fontSize: '14px',
+                }}>
+                  <i className="fas fa-exclamation-circle"></i>
+                  <span>{submitError}</span>
+                </div>
+              )}
               <button
                 type="submit"
                 className="vf-submit-btn"
