@@ -7,6 +7,14 @@ export const metadata: Metadata = {
         default: 'Al Rahma Islamic Center of Phoenix | Masjid & Community Center in Phoenix, AZ',
         template: '%s | Al Rahma Islamic Center of Phoenix',
     },
+    icons: {
+        icon: [
+            { url: '/favicon.ico', sizes: 'any' },
+            { url: '/aicp-logo.png', type: 'image/png' },
+        ],
+        apple: '/aicp-logo.png',
+        shortcut: '/favicon.ico',
+    },
     description:
         "Al Rahma Islamic Center of Phoenix (AICP) — Your local masjid in Phoenix, AZ offering daily prayers, Islamic education, Arabic classes, community programs, and more. Visit us at 2916 E McDowell Rd.",
     metadataBase: new URL('https://masjidal-rahma.com'),
@@ -63,7 +71,8 @@ export default function RootLayout({
                     href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap"
                     rel="stylesheet"
                 />
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+                <link rel="apple-touch-icon" href="/aicp-logo.png" />
             </head>
             <body>{children}</body>
         </html>

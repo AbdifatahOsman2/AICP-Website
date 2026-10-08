@@ -70,15 +70,18 @@ export function HeroSection() {
           transition={{ duration: 1.2, delay: 1.1, ease: easeOutExpo }}
         >
           <MagneticButton className="magnetic-wrapper" strength={0.2} radius={80}>
-            <motion.button
+            <motion.a
+              href="https://www.google.com/maps/search/?api=1&query=Al+Rahma+Islamic+Center+2916+E+McDowell+Rd+Phoenix+AZ+85008"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn btn-primary"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
               transition={{ duration: 0.15 }}
             >
               Visit Us
-              <i className="fas fa-arrow-right"></i>
-            </motion.button>
+              <i className="fas fa-map-marker-alt"></i>
+            </motion.a>
           </MagneticButton>
           <MagneticButton className="magnetic-wrapper" strength={0.2} radius={80}>
             <motion.a
