@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { motion, useInView } from 'framer-motion';
 import { staggerContainer, fadeUp } from './animations';
 
@@ -35,15 +36,18 @@ export function StorySection() {
               dedication of our brothers and sisters.
             </motion.p>
             <motion.div variants={fadeUp}>
-              <motion.button
-                className="btn btn-accent"
-                whileHover={{ scale: 1.03, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.3 }}
-              >
-                Learn Our Story
-                <i className="fas fa-arrow-right"></i>
-              </motion.button>
+              <Link href="/about">
+                <motion.span
+                  className="btn btn-accent"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}
+                  whileHover={{ scale: 1.03, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  Learn Our Story
+                  <i className="fas fa-arrow-right"></i>
+                </motion.span>
+              </Link>
             </motion.div>
           </motion.div>
 
