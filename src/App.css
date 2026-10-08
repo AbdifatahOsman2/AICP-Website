@@ -2166,6 +2166,14 @@ h6 {
   gap: 14px;
 }
 
+.about-footer-brand .logo-name {
+  color: var(--primary, #083475);
+}
+
+.about-footer-brand .logo-tagline {
+  color: rgba(26, 26, 26, 0.6);
+}
+
 .about-footer-copyright {
   font-size: 0.75rem;
   font-weight: 300;

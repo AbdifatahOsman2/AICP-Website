@@ -274,33 +274,39 @@
 .imams-footer-brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
 }
 
-.imams-footer-brand .logo-icon {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--primary);
-  border-radius: 10px;
-  color: var(--white);
-  font-size: 1rem;
+.imams-footer-brand:hover {
+  opacity: 0.85;
+}
+
+.imams-footer-logo-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .imams-footer-brand .logo-text {
   display: flex;
   flex-direction: column;
+  text-align: left;
 }
 
 .imams-footer-brand .logo-name {
-  font-weight: 600;
-  font-size: 1rem;
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--primary, #083475);
+  line-height: 1.2;
 }
 
 .imams-footer-brand .logo-tagline {
   font-size: 0.75rem;
+  color: rgba(26, 26, 26, 0.6);
+  font-weight: 400;
 }
 
 .imams-footer-copyright {

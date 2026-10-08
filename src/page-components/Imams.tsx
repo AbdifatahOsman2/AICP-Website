@@ -155,15 +155,17 @@ const Imams: React.FC = () => {
       <footer className="imams-footer">
         <div className="container">
           <div className="imams-footer-content">
-            <div className="imams-footer-brand">
-              <div className="logo-icon">
-                <i className="fas fa-mosque"></i>
-              </div>
+            <Link href="/" className="imams-footer-brand">
+              <img
+                src="/aicp-logo.png"
+                alt="Al Rahma Islamic Center of Phoenix"
+                className="imams-footer-logo-img"
+              />
               <div className="logo-text">
-                <span className="logo-name" style={{ color: 'var(--primary)' }}>Al Rahma</span>
-                <span className="logo-tagline" style={{ color: 'rgba(26,26,26,0.5)' }}>Islamic Center of Phoenix</span>
+                <span className="logo-name">Al Rahma</span>
+                <span className="logo-tagline">Islamic Center of Phoenix</span>
               </div>
-            </div>
+            </Link>
             <p className="imams-footer-copyright">
               © {new Date().getFullYear()} Al Rahma Islamic Center of Phoenix
             </p>
