@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { motion, useInView } from 'framer-motion';
 import { staggerContainer, fadeUp } from './animations';
 
@@ -58,24 +59,30 @@ export function MadrasahSection() {
               the Quran, and develop strong moral character rooted in faith.
             </motion.p>
             <motion.div className="feature-buttons" variants={fadeUp}>
-              <motion.button
-                className="btn btn-primary"
-                whileHover={{ scale: 1.03, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.3 }}
-              >
-                Learn More
-                <i className="fas fa-arrow-right"></i>
-              </motion.button>
-              <motion.button
-                className="btn btn-secondary-dark"
-                whileHover={{ scale: 1.03, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.3 }}
-              >
-                <i className="fas fa-mobile-alt"></i>
-                Madrasah App
-              </motion.button>
+              <Link href="/education" style={{ textDecoration: 'none' }}>
+                <motion.span
+                  className="btn btn-primary"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}
+                  whileHover={{ scale: 1.03, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  Learn More
+                  <i className="fas fa-arrow-right"></i>
+                </motion.span>
+              </Link>
+              <Link href="/register" style={{ textDecoration: 'none' }}>
+                <motion.span
+                  className="btn btn-secondary-dark"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}
+                  whileHover={{ scale: 1.03, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <i className="fas fa-user-plus"></i>
+                  Enroll Now
+                </motion.span>
+              </Link>
             </motion.div>
           </motion.div>
         </div>

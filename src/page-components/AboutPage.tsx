@@ -153,14 +153,15 @@ export function AboutPage() {
                   of faith.
                 </p>
               </div>
-              <motion.a
-                href="#"
-                className="about-history-link"
-                whileHover={{ x: 8 }}
-                transition={{ duration: 0.3 }}
-              >
-                Read Our Full History <i className="fas fa-arrow-right"></i>
-              </motion.a>
+              <Link href="/imams" className="about-history-link">
+                <motion.span
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
+                  whileHover={{ x: 8 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  Meet Our Leadership &amp; Imams <i className="fas fa-arrow-right"></i>
+                </motion.span>
+              </Link>
             </motion.div>
 
             {/* Right Column - Features */}

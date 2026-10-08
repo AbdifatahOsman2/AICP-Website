@@ -279,9 +279,9 @@ const IslamicCalendar: React.FC = () => {
                 <i className="fas fa-info-circle"></i>
                 Showing first 10 days. Full schedule available for download.
               </p>
-              <button className="ic-download-btn">
+              <button className="ic-download-btn" onClick={() => window.print()}>
                 <i className="fas fa-download"></i>
-                Download Full Schedule (PDF)
+                Download / Print Full Schedule
               </button>
             </motion.div>
           )}
@@ -395,10 +395,10 @@ const IslamicCalendar: React.FC = () => {
             transition={{ duration: 0.8 }}
           >
             <h3>Stay Updated</h3>
-            <p>Subscribe to receive reminders for prayer times, events, and important dates</p>
-            <Link href="/" className="ic-cta-btn">
-              <i className="fas fa-bell"></i>
-              Get Notifications
+            <p>Check daily prayer timings, Adhan &amp; Iqamah times for Ramadan and all year round</p>
+            <Link href="/prayer-times" className="ic-cta-btn">
+              <i className="fas fa-clock"></i>
+              View Daily Prayer Times
             </Link>
           </motion.div>
         </div>

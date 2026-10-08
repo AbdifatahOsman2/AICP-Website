@@ -13,7 +13,7 @@ const navItems = [
   { label: 'Prayer Times', href: '/prayer-times', isRoute: true },
   { label: 'Education', href: '/education', isRoute: true },
   { label: 'Community', href: '/community', isRoute: true },
-  { label: 'Contact', href: '#contact', isRoute: false },
+  { label: 'Contact', href: '/#contact', isRoute: true },
 ];
 
 export function Header() {

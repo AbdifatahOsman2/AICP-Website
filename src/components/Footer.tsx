@@ -23,8 +23,8 @@ const footerLinks = {
   community: [
     { label: 'Prayer Schedule', href: '/prayer-times', isRoute: true },
     { label: 'Events', href: '/community', isRoute: true },
-    { label: 'Videos', href: 'https://www.youtube.com/channel/UCZhSVWVHK0vfxZOOKWA_-ZQ', external: true },
-    { label: 'Contact Us', href: '#contact', isRoute: false },
+    { label: 'Videos', href: 'https://www.youtube.com/channel/UCZhSVWVHK0vfxZOOKWA_-ZQ', external: true, isRoute: false },
+    { label: 'Contact Us', href: '/#contact', isRoute: true },
   ],
   resources: [
     { label: 'Daily Prayers', href: '/prayer-times', isRoute: true },
