@@ -32,7 +32,7 @@ function loadEnv() {
 
 loadEnv();
 
-const TO_EMAIL = process.env.ADMIN_EMAIL || 'backupabdifatah@gmail.com';
+const TO_EMAIL = process.env.ADMIN_EMAIL || process.env.SMTP_USER || 'info@aicpaz.org';
 const resendKey = process.env.RESEND_API_KEY;
 const web3FormsKey = process.env.WEB3FORMS_KEY;
 const smtpPass = process.env.SMTP_PASS || process.env.GMAIL_APP_PASSWORD;

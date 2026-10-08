@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import nodemailer from 'nodemailer';
 
-const TO_EMAIL = process.env.ADMIN_EMAIL || 'backupabdifatah@gmail.com';
+const TO_EMAIL = process.env.ADMIN_EMAIL || process.env.SMTP_USER || 'info@aicpaz.org';
 
 function generateEmailContent(formType: string, data: Record<string, any>): { subject: string; html: string; replyTo?: string } {
   const timestamp = new Date().toLocaleString('en-US', {
