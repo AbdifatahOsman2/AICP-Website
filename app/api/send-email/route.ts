@@ -264,20 +264,47 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // Method 2: Nodemailer (if SMTP_PASS / GMAIL_APP_PASSWORD is available)
+    // Method 2: Web3Forms (if WEB3FORMS_KEY is available - works over HTTPS port 443)
+    if (process.env.WEB3FORMS_KEY) {
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            access_key: process.env.WEB3FORMS_KEY,
+            subject,
+            from_name: 'Al Rahma Islamic Center',
+            to_email: TO_EMAIL,
+            ...(replyTo ? { replyto: replyTo } : {}),
+            message: html,
+          }),
+        });
+        const resJson = await response.json();
+        if (resJson.success) {
+          console.log('[Web3Forms Success]');
+          return NextResponse.json({
+            success: true,
+            message: 'Email delivered successfully via Web3Forms',
+            provider: 'web3forms',
+          });
+        }
+      } catch (w3Err) {
+        console.error('[Web3Forms Exception]', w3Err);
+      }
+    }
+
+    // Method 3: Nodemailer (if SMTP_PASS / GMAIL_APP_PASSWORD is available)
     const smtpPass = process.env.SMTP_PASS || process.env.GMAIL_APP_PASSWORD;
     if (smtpPass) {
       try {
         const smtpUser = process.env.SMTP_USER || TO_EMAIL;
         const transporter = nodemailer.createTransport({
-          service: process.env.SMTP_SERVICE || 'gmail',
-          host: process.env.SMTP_HOST || 'smtp.gmail.com',
-          port: Number(process.env.SMTP_PORT) || 465,
-          secure: Boolean(process.env.SMTP_SECURE ?? true),
+          service: 'gmail',
           auth: {
             user: smtpUser,
             pass: smtpPass,
           },
+          connectionTimeout: 10000, // 10s timeout
         });
 
         const info = await transporter.sendMail({

@@ -34,6 +34,7 @@ loadEnv();
 
 const TO_EMAIL = process.env.ADMIN_EMAIL || 'backupabdifatah@gmail.com';
 const resendKey = process.env.RESEND_API_KEY;
+const web3FormsKey = process.env.WEB3FORMS_KEY;
 const smtpPass = process.env.SMTP_PASS || process.env.GMAIL_APP_PASSWORD;
 
 console.log('----------------------------------------------------');
@@ -41,7 +42,8 @@ console.log(' Al Rahma Website — Email Dispatcher Test');
 console.log('----------------------------------------------------');
 console.log(`Target Recipient: ${TO_EMAIL}`);
 console.log(`Resend API Key:   ${resendKey ? 'Detected (' + resendKey.substring(0, 6) + '...)' : 'Not detected'}`);
-console.log(`SMTP / App Pass:  ${smtpPass ? 'Detected' : 'Not detected'}`);
+console.log(`Web3Forms Key:    ${web3FormsKey ? 'Detected (' + web3FormsKey.substring(0, 6) + '...)' : 'Not detected'}`);
+console.log(`SMTP / App Pass:  ${smtpPass ? 'Detected (' + smtpPass.substring(0, 4) + '****)' : 'Not detected'}`);
 console.log('----------------------------------------------------');
 
 const testPayload = {
@@ -56,8 +58,9 @@ const testPayload = {
 };
 
 async function run() {
+  // Method 1: Resend (HTTPS Port 443)
   if (resendKey) {
-    console.log('Attempting delivery via Resend...');
+    console.log('Attempting delivery via Resend (HTTPS Port 443)...');
     try {
       const resend = new Resend(resendKey);
       const res = await resend.emails.send({
@@ -77,13 +80,42 @@ async function run() {
     }
   }
 
+  // Method 2: Web3Forms (HTTPS Port 443)
+  if (web3FormsKey) {
+    console.log('Attempting delivery via Web3Forms (HTTPS Port 443)...');
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: web3FormsKey,
+          subject: testPayload.subject,
+          from_name: 'Al Rahma Website Test',
+          to_email: TO_EMAIL,
+          message: testPayload.html
+        })
+      });
+      const resJson = await response.json();
+      if (resJson.success) {
+        console.log('SUCCESS! Email sent via Web3Forms.');
+        return;
+      } else {
+        console.error('Web3Forms delivery failed:', resJson.message);
+      }
+    } catch (err) {
+      console.error('Web3Forms exception:', err.message);
+    }
+  }
+
+  // Method 3: SMTP (Port 465 / 587)
   if (smtpPass) {
-    console.log('Attempting delivery via SMTP (Gmail)...');
+    console.log('Attempting delivery via Gmail SMTP...');
     try {
       const user = process.env.SMTP_USER || TO_EMAIL;
       const transporter = nodemailer.createTransport({
         service: 'gmail',
-        auth: { user, pass: smtpPass }
+        auth: { user, pass: smtpPass },
+        connectionTimeout: 10000,
       });
       const info = await transporter.sendMail({
         from: `"Al Rahma Website" <${user}>`,
@@ -95,14 +127,13 @@ async function run() {
       return;
     } catch (err) {
       console.error('SMTP delivery failed:', err.message);
+      if (err.message.includes('ETIMEDOUT') || err.message.includes('ENETUNREACH')) {
+        console.log('\n[Diagnostic Note]');
+        console.log('Your local network or ISP is blocking outbound SMTP ports 465 & 587 (common on residential Wi-Fi).');
+        console.log('When deployed to Netlify cloud, SMTP may work, BUT using an HTTPS-based service like Resend (port 443) is 100% reliable.');
+      }
     }
   }
-
-  console.log('\n[Notice] No active credentials found in .env or .env.local yet.');
-  console.log('To send live emails to ' + TO_EMAIL + ', set either:');
-  console.log('  1. RESEND_API_KEY="re_..." in .env.local or Netlify environment variables');
-  console.log('  OR');
-  console.log('  2. SMTP_PASS="your-16-char-gmail-app-password" in .env.local or Netlify');
 }
 
 run();
